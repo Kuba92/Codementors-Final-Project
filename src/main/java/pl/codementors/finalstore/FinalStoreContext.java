@@ -24,16 +24,28 @@ public class FinalStoreContext {
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Method adding default admin after deployment if users list is empty.
+     */
     @PostConstruct
     public void init() {
         if (sizeOfDatabase() == 0) {
             User admin = new User();
+            admin.setName("admin");
+            admin.setSurname("admin");
+            admin.setNickname("admin");
+            admin.setEmail("");
+            admin.setAccepted(true);
+            admin.setRole(User.Role.ADMIN);
+            em.persist(admin);
         }
     }
 
 
-
-
+    /**
+     * Method checking size of users list.
+     * @return Size of users list.
+     */
     private int sizeOfDatabase() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> query = cb.createQuery(User.class);
