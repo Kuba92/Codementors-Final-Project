@@ -6,7 +6,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
-        <h:dataTable value="#{allUsersList.users}" var="user">
+        <h:dataTable value="#{allUsersList.users}" var="user" rendered="#{roleView.admin}" >
             <h:column>
                 <f:facet name = "header">ID</f:facet>
                 #{user.id}
@@ -35,6 +35,14 @@
                 <f:facet name = "header">Is Accepted?</f:facet>
                 #{user.accepted}
             </h:column>
+            <h:column>
+                <h:button outcome="user_edit" value="Edit">
+                    <f:param name="userId" value="#{user.id}"/>
+                </h:button>
+            </h:column>
         </h:dataTable>
+        <h:button outcome="user_edit" value="Add">
+            <f:param name="userId" value="0"/>
+        </h:button>
     </ui:define>
 </ui:composition>

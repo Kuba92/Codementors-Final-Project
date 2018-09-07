@@ -31,4 +31,21 @@ public class FinalStoreDAO {
     public List<User> findAllUsers(){
         return em.createQuery("select u from User u").getResultList();
     }
+
+    public User findUserById(int id) {
+        Optional<User> user = Optional.ofNullable(em.find(User.class, id));
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            return new User();
+        }
+    }
+
+    public void updateUser(User user){
+        em.merge(user);
+    }
+
+    public void createUser(User user){
+        em.persist(user);
+    }
 }
