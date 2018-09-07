@@ -34,6 +34,7 @@ public class FinalStoreContext {
             admin.setName("admin");
             admin.setSurname("admin");
             admin.setNickname("admin");
+            admin.setPassword("admin");
             admin.setEmail("");
             admin.setAccepted(true);
             admin.setRole(User.Role.ADMIN);
