@@ -28,6 +28,9 @@ public class User {
     private String nickname;
 
     @Column
+    private String password;
+
+    @Column
     private boolean isAccepted;
 
     @Column
@@ -91,5 +94,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
