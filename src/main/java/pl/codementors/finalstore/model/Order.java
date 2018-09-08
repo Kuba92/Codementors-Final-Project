@@ -18,7 +18,8 @@ public class Order  {
     @Column
     private String adress;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany
+    @JoinColumn(name = "product", referencedColumnName = "id")
     private List<Product> products;
 
     public Order() {
