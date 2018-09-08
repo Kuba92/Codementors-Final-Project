@@ -62,4 +62,12 @@ public class AllUsersList implements Serializable {
         user.setAccepted(b);
         dao.updateUser(user);
     }
+
+    public boolean isUserAlreadyAccepted(User user) {
+        if (user.isAccepted() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

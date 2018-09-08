@@ -48,7 +48,7 @@
             <h:column>
                 <h:form>
                     <h:commandButton value="Accept user" actionListener="#{allUsersList.acceptUser(user, true)}"
-                                     rendered="#{roleView.admin}"/>
+                                     rendered="#{roleView.admin}" disabled="#{allUsersList.isUserAlreadyAccepted(user)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>
