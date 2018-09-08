@@ -49,5 +49,11 @@
             <h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">
                 <f:param name="userId" value="0"/>
             </h:button>
+        </h:form>
+        <h:form rendered="#{roleView.user}">
+            <h:button outcome="user_edit" value="Edit your profile">
+                <f:param name="userId" value="#{allUsersList.currentUser.id}"/>
+            </h:button>
+        </h:form>
     </ui:define>
 </ui:composition>

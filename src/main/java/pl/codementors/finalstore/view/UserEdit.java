@@ -25,7 +25,7 @@ public class UserEdit implements Serializable {
 
     private List<SelectItem> rolesList;
 
-    public User getUser(){
+    public User getUser() {
         if (user == null) {
             user = dao.findUserById(userId);
         }
@@ -40,8 +40,8 @@ public class UserEdit implements Serializable {
         this.userId = userId;
     }
 
-    public void saveUser(){
-        if(user.getId() == 0){
+    public void saveUser() {
+        if (user.getId() == 0) {
             dao.createUser(user);
         } else {
             dao.updateUser(user);

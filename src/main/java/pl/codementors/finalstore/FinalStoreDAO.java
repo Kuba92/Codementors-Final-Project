@@ -41,6 +41,15 @@ public class FinalStoreDAO {
         }
     }
 
+    public Optional<User> findUserByNickname(final String nickame) {
+        try {
+            return Optional.of((User) em.createQuery("SELECT u From User u where u.nickname=:nickname")
+                    .setParameter("nickname", nickame).getSingleResult());
+        } catch (final NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
     public void updateUser(User user){
         em.merge(user);
     }
