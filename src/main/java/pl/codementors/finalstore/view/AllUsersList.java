@@ -3,6 +3,7 @@ package pl.codementors.finalstore.view;
 
 import pl.codementors.finalstore.FinalStoreDAO;
 import pl.codementors.finalstore.model.User;
+import pl.codementors.finalstore.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -18,6 +19,9 @@ public class AllUsersList implements Serializable {
     @EJB
     private FinalStoreDAO dao;
 
+    @EJB
+    private UserService userService;
+
     private List<User> users;
 
     /**
@@ -29,6 +33,10 @@ public class AllUsersList implements Serializable {
             users = dao.findAllUsers();
         }
         return users;
+    }
+
+    public User getCurrentUser() {
+        return userService.getCurrentlyLoggedUser().get();
     }
 
 }
