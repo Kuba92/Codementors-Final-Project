@@ -5,9 +5,12 @@ import pl.codementors.finalstore.FinalStoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
+import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Named
 @ViewScoped
@@ -19,6 +22,8 @@ public class UserEdit implements Serializable {
     private User user;
 
     private int userId;
+
+    private List<SelectItem> rolesList;
 
     public User getUser(){
         if (user == null) {
@@ -41,5 +46,15 @@ public class UserEdit implements Serializable {
         } else {
             dao.updateUser(user);
         }
+    }
+
+    public List<SelectItem> getRoles() {
+        if (rolesList == null) {
+            rolesList = new ArrayList<>();
+            for (User.Role roles : User.Role.values()) {
+                rolesList.add(new SelectItem(roles, roles.name()));
+            }
+        }
+        return rolesList;
     }
 }
