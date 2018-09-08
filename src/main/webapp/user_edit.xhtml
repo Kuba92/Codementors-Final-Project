@@ -22,9 +22,12 @@
                 <h:inputText id="email" value="#{userEdit.user.email}"/>
                 <h:outputLabel value="Nickname" for="nickname"/>
                 <h:inputText id="nickname" value="#{userEdit.user.nickname}"/>
-                <h:selectOneRadio id="role" value="#{userEdit.user.role}">
+                <h:outputLabel value="Role:" for="role" rendered="#{roleView.admin}"/>
+                <h:selectOneRadio id="role" value="#{userEdit.user.role}" rendered="#{roleView.admin}">
                     <f:selectItems value="#{userEdit.roles}"/>
                 </h:selectOneRadio>
+                <h:outputLabel value="Acceptance of the user:" for="acceptance" rendered="#{roleView.admin}"/>
+                <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance" rendered="#{roleView.admin}"/>
             </h:panelGrid>
             <h:commandButton action="users_list" actionListener="#{userEdit.saveUser}" value="Save"/>
         </h:form>
