@@ -48,4 +48,8 @@ public class FinalStoreDAO {
     public void createUser(User user){
         em.persist(user);
     }
+
+    public void deleteUser(User user){
+        em.remove(em.merge(user));
+    }
 }

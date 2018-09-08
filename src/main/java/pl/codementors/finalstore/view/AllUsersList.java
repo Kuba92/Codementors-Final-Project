@@ -31,4 +31,9 @@ public class AllUsersList implements Serializable {
         return users;
     }
 
+    public void removeUser(User user){
+        users.remove(user);
+        dao.deleteUser(user);
+    }
+
 }
