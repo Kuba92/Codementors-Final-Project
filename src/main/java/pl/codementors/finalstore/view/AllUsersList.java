@@ -7,7 +7,10 @@ import pl.codementors.finalstore.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,7 +25,11 @@ public class AllUsersList implements Serializable {
     @EJB
     private UserService userService;
 
+    @Inject
+    private HttpServletRequest request;
+
     private List<User> users;
+
 
     /**
      * Method filling placeholder with all existing users.
@@ -44,4 +51,15 @@ public class AllUsersList implements Serializable {
         dao.deleteUser(user);
     }
 
+    public void logout() {
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+    public void acceptUser(User user, boolean b) {
+        user.setAccepted(b);
+        dao.updateUser(user);
+    }
 }

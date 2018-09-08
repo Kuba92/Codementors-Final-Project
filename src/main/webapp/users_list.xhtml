@@ -6,54 +6,62 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
-            <h:dataTable value="#{allUsersList.users}" var="user" rendered="#{roleView.admin}">
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">ID</f:facet>
-                    #{user.id}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Nickname</f:facet>
-                    #{user.nickname}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Name</f:facet>
-                    #{user.name}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Surname</f:facet>
-                    #{user.surname}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Email</f:facet>
-                    #{user.email}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Role</f:facet>
-                    #{user.role}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <f:facet name="header">Is Accepted?</f:facet>
-                    #{user.accepted}
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <h:button outcome="user_edit" value="Edit">
-                        <f:param name="userId" value="#{user.id}"/>
-                    </h:button>
-                </h:column>
-                <h:column rendered="#{roleView.admin}">
-                    <h:form>
-                        <h:commandButton value="Delete User" action="#{allUsersList.removeUser(user)}"/>
-                    </h:form>
-                </h:column>
-            </h:dataTable>
-            <h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">
-                <f:param name="userId" value="0"/>
-            </h:button>
-        </h:form>
+        <h:dataTable value="#{allUsersList.users}" var="user" rendered="#{roleView.admin}">
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">ID</f:facet>
+                #{user.id}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Nickname</f:facet>
+                #{user.nickname}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Name</f:facet>
+                #{user.name}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Surname</f:facet>
+                #{user.surname}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Email</f:facet>
+                #{user.email}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Role</f:facet>
+                #{user.role}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <f:facet name="header">Is Accepted?</f:facet>
+                #{user.accepted}
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <h:button outcome="user_edit" value="Edit">
+                    <f:param name="userId" value="#{user.id}"/>
+                </h:button>
+            </h:column>
+            <h:column rendered="#{roleView.admin}">
+                <h:form>
+                    <h:commandButton value="Delete User" action="#{allUsersList.removeUser(user)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Accept user" actionListener="#{allUsersList.acceptUser(user, true)}"
+                                     rendered="#{roleView.admin}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+        <h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">
+            <f:param name="userId" value="0"/>
+        </h:button>
         <h:form rendered="#{roleView.user}">
             <h:button outcome="user_edit" value="Edit your profile">
                 <f:param name="userId" value="#{allUsersList.currentUser.id}"/>
             </h:button>
+        </h:form>
+        <h:form>
+            <h:commandButton value="Logout" action="#{allUsersList.logout}"/>
         </h:form>
     </ui:define>
 </ui:composition>
