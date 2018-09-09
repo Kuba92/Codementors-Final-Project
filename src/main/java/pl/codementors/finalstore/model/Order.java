@@ -2,6 +2,7 @@ package pl.codementors.finalstore.model;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "orders")
@@ -64,5 +65,37 @@ public class Order  {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return id == order.id &&
+                Objects.equals(customer, order.customer) &&
+                Objects.equals(adress, order.adress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, customer, adress);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", adress='" + adress + '\'' +
+                '}';
     }
 }
