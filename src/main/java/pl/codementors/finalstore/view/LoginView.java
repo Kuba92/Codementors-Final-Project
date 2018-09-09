@@ -1,7 +1,7 @@
 package pl.codementors.finalstore.view;
 
 
-import pl.codementors.finalstore.FinalStoreDAO;
+import pl.codementors.finalstore.FinalUserDAO;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class LoginView implements Serializable {
 
     @EJB
-    private FinalStoreDAO dao;
+    private FinalUserDAO dao;
 
 
 }

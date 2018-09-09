@@ -3,7 +3,7 @@ package pl.codementors.finalstore.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"})) //dodalem unique constraint na email i nickname ie. nie moze byc uzytkownikow o dwoch takich samych nickach i emailach
 public class User {
 
     public enum Role {
