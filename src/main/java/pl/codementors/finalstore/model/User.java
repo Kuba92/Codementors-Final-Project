@@ -1,6 +1,7 @@
 package pl.codementors.finalstore.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"})) //dodalem unique constraint na email i nickname ie. nie moze byc uzytkownikow o dwoch takich samych nickach i emailach
@@ -36,6 +37,9 @@ public class User {
     @Column
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany (mappedBy = "user")
+    private List<Order> usersOrders;
 
     public User() {
     }

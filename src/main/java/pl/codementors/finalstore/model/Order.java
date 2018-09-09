@@ -12,7 +12,7 @@ public class Order  {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "customer", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id") //added _id to customer tag
     private User customer;
 
     @Column
@@ -21,7 +21,17 @@ public class Order  {
     @OneToMany(mappedBy = "order")
     private List<Product> products;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
     public Order() {
+    }
+
+    public Order(User customer, String adress, List<Product> products) {
+        this.customer = customer;
+        this.adress = adress;
+        this.products = products;
     }
 
     public int getId() {
