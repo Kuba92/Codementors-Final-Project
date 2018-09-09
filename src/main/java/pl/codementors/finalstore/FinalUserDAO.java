@@ -24,10 +24,15 @@ public class FinalUserDAO {
     private EntityManager em;
 
 
-//    @Path("{id}") // najlepiej byloby uzytkownika wyszukiwac po id, inaczej trzeba zrobic nickname i password jako unique na encji, ale to tylko sugestia :)
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-    public Optional<User> findUser (String nickname, String password) {
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public User findUser (@PathParam("id") int id) {
+        return em.find(User.class, id);
+    }
+
+
+    public Optional<User> findUserByNickAndPass(String nickname, String password) {
         TypedQuery<User> query = em.createQuery("select u from User u where u.nickame = :nickname and u.password = :password", User.class);
         query.setParameter("nickname", nickname);
         query.setParameter("password", password);
