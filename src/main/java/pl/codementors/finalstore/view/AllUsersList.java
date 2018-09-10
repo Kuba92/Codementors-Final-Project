@@ -1,7 +1,7 @@
 package pl.codementors.finalstore.view;
 
 
-import pl.codementors.finalstore.FinalStoreDAO;
+import pl.codementors.finalstore.FinalUserDAO;
 import pl.codementors.finalstore.model.User;
 import pl.codementors.finalstore.service.UserService;
 
@@ -20,7 +20,7 @@ public class AllUsersList implements Serializable {
 
 
     @EJB
-    private FinalStoreDAO dao;
+    private FinalUserDAO dao;
 
     @EJB
     private UserService userService;
@@ -48,7 +48,7 @@ public class AllUsersList implements Serializable {
 
     public void removeUser(User user){
         users.remove(user);
-        dao.deleteUser(user);
+        dao.removeUser(user);
     }
 
     public void logout() {

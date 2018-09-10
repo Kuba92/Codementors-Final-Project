@@ -1,7 +1,7 @@
 package pl.codementors.finalstore.view;
 
 
-import pl.codementors.finalstore.FinalStoreDAO;
+import pl.codementors.finalstore.FinalUserDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UserEdit implements Serializable {
 
     @EJB
-    private FinalStoreDAO dao;
+    private FinalUserDAO dao;
 
     private User user;
 
@@ -27,7 +27,7 @@ public class UserEdit implements Serializable {
 
     public User getUser() {
         if (user == null) {
-            user = dao.findUserById(userId);
+            user = dao.findUser(userId);
         }
         return user;
     }
@@ -42,7 +42,7 @@ public class UserEdit implements Serializable {
 
     public void saveUser() {
         if (user.getId() == 0) {
-            dao.createUser(user);
+            dao.addUser(user);
         } else {
             dao.updateUser(user);
         }

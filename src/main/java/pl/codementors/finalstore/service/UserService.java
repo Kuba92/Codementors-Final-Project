@@ -1,6 +1,6 @@
 package pl.codementors.finalstore.service;
 
-import pl.codementors.finalstore.FinalStoreDAO;
+import pl.codementors.finalstore.FinalUserDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
@@ -17,7 +17,7 @@ public class UserService {
     private Principal principal;
 
     @EJB
-    private FinalStoreDAO dao;
+    private FinalUserDAO dao;
 
     public Optional<User> getCurrentlyLoggedUser() {
         if (Objects.isNull(principal)) {

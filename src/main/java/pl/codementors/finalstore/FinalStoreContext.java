@@ -3,6 +3,7 @@ package pl.codementors.finalstore;
 import pl.codementors.finalstore.model.User;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.persistence.EntityManager;
@@ -19,10 +20,10 @@ import java.util.List;
 public class FinalStoreContext {
 
     /**
-     * Entity manager.
+     * UserDAO
      */
-    @PersistenceContext
-    private EntityManager em;
+    @EJB //wstrzykniety userDAO zamiast em
+    private FinalUserDAO userDAO;
 
     /**
      * Method adding default admin after deployment if users list is empty.
@@ -38,7 +39,7 @@ public class FinalStoreContext {
             admin.setEmail("");
             admin.setAccepted(true);
             admin.setRole(User.Role.ADMIN);
-            em.persist(admin);
+            userDAO.addUser(admin);
         }
     }
 
@@ -48,10 +49,11 @@ public class FinalStoreContext {
      * @return Size of users list.
      */
     private int sizeOfDatabase() {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<User> query = cb.createQuery(User.class);
-        query.from(User.class);
-        List<User> users = em.createQuery(query).getResultList();
-        return users.size();
+//        CriteriaBuilder cb = em.getCriteriaBuilder();
+//        CriteriaQuery<User> query = cb.createQuery(User.class);
+//        query.from(User.class);
+//        List<User> users = em.createQuery(query).getResultList();
+//        return users.size();
+        return userDAO.findAllUsers().size(); //zamiast strzykiwac em, wstrzyknalem userDAO, i nie musimy tutaj duplikowac kodu
     }
 }
