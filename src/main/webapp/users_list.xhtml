@@ -61,7 +61,7 @@
             </h:button>
         </h:form>
         <h:form>
-            <h:commandButton value="Logout" action="#{allUsersList.logout}"/>
+            <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
         </h:form>
     </ui:define>
 </ui:composition>

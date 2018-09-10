@@ -27,6 +27,8 @@
                 </h:selectOneRadio>
                 <br/>
                 <h:commandButton rendered="#{roleView.admin}" actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
+                <!--Nie jestem pewien czy sekcja opcji dla admina jest potrzebna w formularzu rejestracji,
+                    bo jest osobne dodawanie użytkowników na liście wszystkich użytkowników dostępnej tylko dla admina ~Maciek-->
                 <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
             </h:panelGrid>
         </h:form>
