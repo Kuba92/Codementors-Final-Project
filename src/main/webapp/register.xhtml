@@ -22,11 +22,11 @@
                 <h:outputLabel value="Password" for="password"/>
                 <h:inputSecret id="password" value="#{userAddView.user.password}" required="true"/>
                 <br/>
-                <h:selectOneRadio value="#{userAddView.user.role}">
+                <h:selectOneRadio rendered="#{roleView.admin}" value="#{userAddView.user.role}">
                     <f:selectItems value="#{userAddView.roles}"/>
                 </h:selectOneRadio>
                 <br/>
-                <h:commandButton actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
+                <h:commandButton rendered="#{roleView.admin}" actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
                 <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
             </h:panelGrid>
         </h:form>
