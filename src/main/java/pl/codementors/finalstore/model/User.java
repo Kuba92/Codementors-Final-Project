@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+
+/**
+ * Entity class representing a User of our store
+ */
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"})) //dodalem unique constraint na email i nickname ie. nie moze byc uzytkownikow o dwoch takich samych nickach i emailach
 public class User {
@@ -43,6 +47,13 @@ public class User {
     private List<Order> usersOrders;
 
     public User() {
+    }
+
+
+
+    public User (boolean isAccepted, Role role) {
+        this.isAccepted = isAccepted;
+        this.role = role;
     }
 
     public User(String name, String surname, String email, String nickname, String password, boolean isAccepted, Role role) {

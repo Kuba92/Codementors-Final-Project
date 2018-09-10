@@ -5,18 +5,29 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
+    <f:metadata>
+        <f:viewParam name="userId" value="#{userAddView.userId}"/>
+    </f:metadata>
     <ui:define name="content">
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Name" for="name"/>
-                <h:inputText id="name" />
+                <h:inputText id="name" value="#{userAddView.user.name}" required="true"/>
                 <h:outputLabel value="Surname" for="surname"/>
-                <h:inputText id="surname" />
+                <h:inputText id="surname" value="#{userAddView.user.surname}" required="true"/>
                 <h:outputLabel value="Email" for="email"/>
-                <h:inputText id="email" />
+                <h:inputText id="email" value="#{userAddView.user.email}" required="true"/>
                 <h:outputLabel value="Login" for="login"/>
-                <h:inputText id="login" />
-                <h:commandButton action="login" value="Register new user"/>
+                <h:inputText id="login" value="#{userAddView.user.nickname}" required="true"/>
+                <h:outputLabel value="Password" for="password"/>
+                <h:inputSecret id="password" value="#{userAddView.user.password}" required="true"/>
+                <br/>
+                <h:selectOneRadio value="#{userAddView.user.role}">
+                    <f:selectItems value="#{userAddView.roles}"/>
+                </h:selectOneRadio>
+                <br/>
+                <h:commandButton actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
+                <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
             </h:panelGrid>
         </h:form>
     </ui:define>

@@ -13,13 +13,25 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * DAO and REST apis for Products in our store
+ */
 @Stateless
 @Path("products")
 public class FinalProductDAO {
 
+
+    /**
+     * Declaring an Entity manager
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Rest api for getting an product from the database by its id
+     * @param id
+     * @return Product
+     */
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -28,6 +40,10 @@ public class FinalProductDAO {
 
     }
 
+    /**
+     * REST api returning all products in the database
+     * @return List<Product>
+     */
     @Path("products")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +55,10 @@ public class FinalProductDAO {
         return productsList;
     }
 
+    /**
+     * REST api to add new products to the database
+     * @param product
+     */
     @Path("")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -46,13 +66,20 @@ public class FinalProductDAO {
         em. persist(product);
     }
 
+    /**
+     * REST api to update products in the databse
+     * @param product
+     */
     @Path("")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateProduct (Product product) {
         em.merge(product);
     }
-
+    /**
+     * REST api to remove products from the database
+     * @param product
+     */
     @Path("")
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)

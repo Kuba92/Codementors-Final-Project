@@ -4,6 +4,10 @@ package pl.codementors.finalstore.model;
 import javax.persistence.*;
 import java.util.Objects;
 
+
+/**
+ * entity class representing a product in our store
+ */
 @Entity
 @Table(name = "products")
 public class Product {

@@ -6,7 +6,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
-        <h:outputStylesheet name="css/styles.css"/>
+        <!--<h:outputStylesheet name="css/styles.css"/>-->
             <form method="post" action="j_security_check">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="j_username" value="Username"/>
@@ -14,7 +14,9 @@
                     <h:outputLabel for="j_password" value="Password"/>
                     <h:inputText id="j_password" name="j_password"/>
                     <h:commandButton name="submit" value="Login"/>
-                    <h:button outcome="register" value="Register"/>
+                    <h:button outcome="register" value="Register">
+                        <f:param name="userId" value="0"/>
+                    </h:button>
                 </h:panelGrid>
                 <br/>
             </form>

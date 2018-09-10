@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Entity class representing an order in our store
+ */
 @Entity
 @Table(name = "orders")
 public class Order  {
