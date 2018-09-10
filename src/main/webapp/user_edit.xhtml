@@ -22,8 +22,8 @@
                 <h:inputText id="email" value="#{userEdit.user.email}"/>
                 <h:outputLabel value="Nickname" for="nickname"/>
                 <h:inputText id="nickname" value="#{userEdit.user.nickname}"/>
-                <h:outputLabel for="password" value="password" rendered="#{roleView.user}"/>
-                <h:inputText id="password" value="#{userEdit.user.password}" rendered="#{roleView.user}"/>
+                <h:outputLabel for="password" value="Password" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
+                <h:inputText id="password" value="#{userEdit.user.password}" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
                 <h:outputLabel value="Role:" for="role" rendered="#{roleView.admin}"/>
                 <h:selectOneRadio id="role" value="#{userEdit.user.role}" rendered="#{roleView.admin}">
                     <f:selectItems value="#{userEdit.roles}"/>
