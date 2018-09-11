@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Stateless
-@Path("oders")
+@Path("orders")
 public class OrdersAPI {
 
     @EJB
