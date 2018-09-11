@@ -11,7 +11,7 @@ import java.util.List;
 
 @Stateless
 @Path("oders")
-public class OdersAPI {
+public class OrdersAPI {
 
     @EJB
     private StoreDAO storeDAO;
@@ -35,6 +35,13 @@ public class OdersAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateOrder (Order order) {
         storeDAO.updateOrder(order);
+    }
+
+    @Path("")
+    @POST
+    @Consumes
+    public void addOrder (Order order) {
+        storeDAO.addOrder(order);
     }
 
     @Path("")

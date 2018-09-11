@@ -1,5 +1,6 @@
 package pl.codementors.finalstore.rest_apis;
 import pl.codementors.finalstore.StoreDAO;
+import pl.codementors.finalstore.model.Order;
 import pl.codementors.finalstore.model.Product;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -26,6 +27,13 @@ public class ProductAPI {
     @Produces(MediaType.APPLICATION_JSON)
     public Product getProductbyId (@PathParam("id") int id) {
         return storeDAO.findProduct(id);
+    }
+
+    @Path("")
+    @POST
+    @Consumes
+    public void addProduct (Product product) {
+        storeDAO.addProduct(product);
     }
 
     @Path("")
