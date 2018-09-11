@@ -1,6 +1,6 @@
 package pl.codementors.finalstore.service;
 
-import pl.codementors.finalstore.FinalUserDAO;
+import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
@@ -17,7 +17,7 @@ public class UserService {
     private Principal principal;
 
     @EJB
-    private FinalUserDAO dao;
+    private StoreDAO dao;
 
     public Optional<User> getCurrentlyLoggedUser() {
         if (Objects.isNull(principal)) {
@@ -26,5 +26,4 @@ public class UserService {
 
         return dao.findUserByNickname(principal.getName());
     }
-
 }

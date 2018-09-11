@@ -1,16 +1,14 @@
 package pl.codementors.finalstore.view;
 
-import pl.codementors.finalstore.FinalUserDAO;
+import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.jws.soap.SOAPBinding;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Named
@@ -19,7 +17,7 @@ public class UserAddView implements Serializable {
 
 
     @EJB
-    private FinalUserDAO userDAO;
+    private StoreDAO userDAO;
 
     private User user;
 

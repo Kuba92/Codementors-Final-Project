@@ -1,7 +1,7 @@
 package pl.codementors.finalstore.view;
 
 
-import pl.codementors.finalstore.FinalUserDAO;
+import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
@@ -17,7 +17,7 @@ import java.util.List;
 public class UserEdit implements Serializable {
 
     @EJB
-    private FinalUserDAO dao;
+    private StoreDAO dao;
 
     private User user;
 

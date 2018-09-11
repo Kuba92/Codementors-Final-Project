@@ -6,11 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import java.util.List;
 
 /**
  * Application store context.
@@ -22,8 +17,8 @@ public class FinalStoreContext {
     /**
      * UserDAO
      */
-    @EJB //wstrzykniety userDAO zamiast em
-    private FinalUserDAO userDAO;
+    @EJB //wstrzykniety storeDAO zamiast em
+    private StoreDAO storeDAO;
 
     /**
      * Method adding default admin after deployment if users list is empty.
@@ -39,7 +34,7 @@ public class FinalStoreContext {
             admin.setEmail("");
             admin.setAccepted(true);
             admin.setRole(User.Role.ADMIN);
-            userDAO.addUser(admin);
+            storeDAO.addUser(admin);
         }
     }
 
@@ -54,6 +49,6 @@ public class FinalStoreContext {
 //        query.from(User.class);
 //        List<User> users = em.createQuery(query).getResultList();
 //        return users.size();
-        return userDAO.findAllUsers().size(); //zamiast strzykiwac em, wstrzyknalem userDAO, i nie musimy tutaj duplikowac kodu
+        return storeDAO.findAllUsers().size(); //zamiast strzykiwac em, wstrzyknalem storeDAO, i nie musimy tutaj duplikowac kodu
     }
 }

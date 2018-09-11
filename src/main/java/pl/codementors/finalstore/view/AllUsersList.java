@@ -1,7 +1,7 @@
 package pl.codementors.finalstore.view;
 
 
-import pl.codementors.finalstore.FinalUserDAO;
+import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 import pl.codementors.finalstore.service.UserService;
 
@@ -20,7 +20,7 @@ public class AllUsersList implements Serializable {
 
 
     @EJB
-    private FinalUserDAO dao;
+    private StoreDAO dao;
 
     @EJB
     private UserService userService;
