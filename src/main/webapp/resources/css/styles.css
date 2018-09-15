@@ -7,11 +7,41 @@
     height: auto;
     border: 2px solid red;
 }
-.headerTop {
-    width: 100%;
-    height: 100px;
+.menuTop {
+    min-width:400px;
+    min-height:100px;
+    margin-right: 200px;
+    margin-left: 200px;
+
+}
+.topDiv {
+    min-width:400px;
+    min-height:100px;
+    margin-right: 200px;
+    margin-left: 200px;
+    position: relative;
+
+
 }
 
+.midDiv {
+    min-width:400px;
+    min-height:0px;
+
+}
+
+.loginLink {
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.registerLink {
+    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 50px;
+}
 .cont {
     width: 100%;
     height: 100%;
@@ -23,6 +53,14 @@
 .buttonReg {
     padding-left: 90px;
     width: 300px;
+}
+
+.mainCenter {
+    min-width:400px;
+    min-height:800px;
+    margin-right: 200px;
+    margin-left: 200px;
+
 }
 
 body {
