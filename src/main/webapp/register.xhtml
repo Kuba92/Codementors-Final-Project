@@ -4,33 +4,50 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
-        template="/template.xhtml">
+        template="/template.xhtml"
+        xmlns:p="http://primefaces.org/ui">
+
     <f:metadata>
         <f:viewParam name="userId" value="#{userAddView.userId}"/>
     </f:metadata>
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Name" for="name"/>
-                <h:inputText id="name" value="#{userAddView.user.name}" required="true"/>
-                <h:outputLabel value="Surname" for="surname"/>
-                <h:inputText id="surname" value="#{userAddView.user.surname}" required="true"/>
-                <h:outputLabel value="Email" for="email"/>
-                <h:inputText id="email" value="#{userAddView.user.email}" required="true"/>
-                <h:outputLabel value="Login" for="login"/>
-                <h:inputText id="login" value="#{userAddView.user.nickname}" required="true"/>
-                <h:outputLabel value="Password" for="password"/>
-                <h:inputSecret id="password" value="#{userAddView.user.password}" required="true"/>
-                <br/>
-                <h:selectOneRadio rendered="#{roleView.admin}" value="#{userAddView.user.role}">
-                    <f:selectItems value="#{userAddView.roles}"/>
-                </h:selectOneRadio>
-                <br/>
-                <h:commandButton rendered="#{roleView.admin}" actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
-                <!--Nie jestem pewien czy sekcja opcji dla admina jest potrzebna w formularzu rejestracji,
-                    bo jest osobne dodawanie użytkowników na liście wszystkich użytkowników dostępnej tylko dla admina ~Maciek-->
-                <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
-            </h:panelGrid>
+            <h:panelGroup layout="block" styleClass="regPanel">
+
+                <p:panel header="Registration form">
+                    <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+                        <f:facet name="header">
+                            <p:messages id="msgs"/>
+                        </f:facet>
+
+                        <p:outputLabel for="name" value="Name"/>
+                        <p:inputText id="name" value="#{userAddView.user.name}" required="true"
+                                     requiredMessage="Name is required."/>
+
+                        <p:outputLabel for="surname" value="Surname:"/>
+                        <p:inputText id="surname" value="#{userAddView.user.surname}" required="true"
+                                     requiredMessage="Surname is required."/>
+
+                        <p:outputLabel for="email" value="Email:"/>
+                        <p:inputText id="email" value="#{userAddView.user.email}" required="true"
+                                     requiredMessage="Email is required."/>
+
+                        <p:outputLabel for="nickname" value="Login:"/>
+                        <p:inputText id="nickname" value="#{userAddView.user.nickname}" required="true"
+                                     requiredMessage="Login is required."/>
+
+                        <p:outputLabel for="password" value="Password:"/>
+                        <p:password id="password" value="#{userAddView.user.password}" required="true"
+                                    requiredMessage="Password is required."/>
+                    </h:panelGrid>
+                    <p:commandButton value="Register" id="btnSurname"
+                                     process="@this,surname,name,email,nickname,password " update="grid" action="login"
+                                     actionListener="#{userAddView.addNewUser}"/>
+                    <p:button value="Cancel" outcome="login.xhtml"/>
+                </p:panel>
+            </h:panelGroup>
+
+
         </h:form>
     </ui:define>
 </ui:composition>
