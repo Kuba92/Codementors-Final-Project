@@ -4,6 +4,8 @@ import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -42,11 +44,15 @@ public class UserAddView implements Serializable {
      * @return
      */
     public User addNewUser () {
+
         if (userId == 0) {
             userDAO.addUser(user);
+
         } else {
             userDAO.updateUser(user);
+
         }
+
         return user;
     }
 
