@@ -4,9 +4,32 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
-        template="/template.xhtml">
-    <ui:define name="content">
+        template="/template.xhtml"
+        xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="content">
         <!--<h:outputStylesheet name="css/styles.css"/>-->
+
+            <form method="post" action="j_security_check">
+                <h:panelGroup layout="block" styleClass="regPanel">
+                    <p:panel header="Login">
+                        <h:panelGrid columns="2" id="grid">
+                            <f:facet name="header">
+                                <p:messages id="msgs"/>
+                            </f:facet>
+                            <p:outputLabel for="j_username" value="Username"/>
+                            <p:inputText id="j_username" name="j_username" required="true" requiredMessage="Username required"/>
+                            <p:outputLabel for="j_password" value="Password"/>
+                            <p:inputText id="j_password" name="j_password" required="true" requiredMessage="Password required"/>
+
+                        </h:panelGrid>
+                        <p:commandButton value="Login" action="main" process="@this,j_username,j_password" update="grid"/>
+                        <p:button outcome="register" value="Register" >
+                            <f:param name="userId" value="0"/>
+                        </p:button>
+                        <br/>
+                    </p:panel>
+                </h:panelGroup>
             <form method="post" action="/store/login">
                 <h:panelGrid columns="2">
                     <h:outputLabel for="j_username" value="Username"/>

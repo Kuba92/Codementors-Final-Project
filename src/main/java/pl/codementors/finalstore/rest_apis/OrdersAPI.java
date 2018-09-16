@@ -10,8 +10,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Stateless
-@Path("oders")
-public class OdersAPI {
+@Path("orders")
+public class OrdersAPI {
 
     @EJB
     private StoreDAO storeDAO;
@@ -36,6 +36,13 @@ public class OdersAPI {
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateOrder (Order order) {
         storeDAO.updateOrder(order);
+    }
+
+    @Path("")
+    @POST
+    @Consumes
+    public void addOrder (Order order) {
+        storeDAO.addOrder(order);
     }
 
     @Path("")
