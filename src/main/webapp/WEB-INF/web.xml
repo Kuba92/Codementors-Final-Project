@@ -8,17 +8,6 @@
         <welcome-file>template.xhtml</welcome-file>
     </welcome-file-list>
 
-    <!--<security-constraint>-->
-        <!--<web-resource-collection>-->
-            <!--<web-resource-name>template</web-resource-name>-->
-            <!--<url-pattern>/template.xhtml</url-pattern>-->
-        <!--</web-resource-collection>-->
-        <!--<auth-constraint>-->
-            <!--<role-name>ADMIN</role-name>-->
-            <!--<role-name>USER</role-name>-->
-        <!--</auth-constraint>-->
-    <!--</security-constraint>-->
-
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>users list</web-resource-name>
@@ -44,4 +33,13 @@
     <security-role>
         <role-name>USER</role-name>
     </security-role>
+
+    <!--<filter>-->
+        <!--<filter-name>loginFilter</filter-name>-->
+        <!--<filter-class>pl.codementors.finalstore.LoginFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>loginFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
 </web-app>

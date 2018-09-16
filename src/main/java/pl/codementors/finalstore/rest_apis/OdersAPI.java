@@ -16,6 +16,7 @@ public class OdersAPI {
     @EJB
     private StoreDAO storeDAO;
 
+
     @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
