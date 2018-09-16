@@ -56,7 +56,7 @@
             <f:param name="userId" value="0"/>
         </h:button>
         <h:form rendered="#{roleView.user}">
-            <h:button outcome="user_edit" value="Edit your profile">
+            <h:button outcome="user_edit" value="Edit your profile" rendered="#{allUsersList.currentUser.accepted}" >
                 <f:param name="userId" value="#{allUsersList.currentUser.id}"/>
             </h:button>
         </h:form>
