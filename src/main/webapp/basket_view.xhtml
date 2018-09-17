@@ -26,7 +26,11 @@
             </h:column>
         </h:dataTable>
         <h:form>
-            <h:commandButton value="Order now !" actionListener="#{basketView.makeOrder}"/>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Address"/>
+                <h:inputText required="true" value="#{basketView.address}"/>
+                <h:commandButton value="Order now !" actionListener="#{basketView.makeOrder}"/>
+            </h:panelGrid>
         </h:form>
     </ui:define>
 </ui:composition>

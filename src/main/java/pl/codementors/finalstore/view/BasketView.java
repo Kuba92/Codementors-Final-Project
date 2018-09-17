@@ -44,6 +44,15 @@ public class BasketView implements Serializable {
      */
     private User customer;
 
+    private String address;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public List<Product> getProductsInBasket() {
         return productsInBasket;
@@ -97,11 +106,13 @@ public class BasketView implements Serializable {
         order = new Order();
         order.setCustomer(customer);
         order.setProducts(productsInBasket);
+        order.setAdress(address);
         for (Product product : productsInBasket) {
             product.setAvailable(false);
             store.updateProduct(product);
         }
         store.addOrder(order);
         productsInBasket = new ArrayList<>();
+        address = "";
     }
 }
