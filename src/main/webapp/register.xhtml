@@ -21,14 +21,6 @@
                 <h:inputText id="login" value="#{userAddView.user.nickname}" required="true"/>
                 <h:outputLabel value="Password" for="password"/>
                 <h:inputSecret id="password" value="#{userAddView.user.password}" required="true"/>
-                <br/>
-                <h:selectOneRadio rendered="#{roleView.admin}" value="#{userAddView.user.role}">
-                    <f:selectItems value="#{userAddView.roles}"/>
-                </h:selectOneRadio>
-                <br/>
-                <h:commandButton rendered="#{roleView.admin}" actionListener="#{userAddView.approveUser}" disabled="#{userAddView.user.accepted}" value="Approve user" />
-                <!--Nie jestem pewien czy sekcja opcji dla admina jest potrzebna w formularzu rejestracji,
-                    bo jest osobne dodawanie użytkowników na liście wszystkich użytkowników dostępnej tylko dla admina ~Maciek-->
                 <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
             </h:panelGrid>
         </h:form>

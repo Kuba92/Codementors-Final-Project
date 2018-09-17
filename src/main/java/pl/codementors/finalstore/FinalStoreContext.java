@@ -44,11 +44,6 @@ public class FinalStoreContext {
      * @return Size of users list.
      */
     private int sizeOfDatabase() {
-//        CriteriaBuilder cb = em.getCriteriaBuilder();
-//        CriteriaQuery<User> query = cb.createQuery(User.class);
-//        query.from(User.class);
-//        List<User> users = em.createQuery(query).getResultList();
-//        return users.size();
-        return storeDAO.findAllUsers().size(); //zamiast strzykiwac em, wstrzyknalem storeDAO, i nie musimy tutaj duplikowac kodu
+        return storeDAO.findAllUsers().size();
     }
 }
