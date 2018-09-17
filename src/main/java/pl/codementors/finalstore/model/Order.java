@@ -16,7 +16,7 @@ public class Order  {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "id") //added _id to customer tag
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private User customer;
 
     @Column
@@ -24,10 +24,6 @@ public class Order  {
 
     @OneToMany (mappedBy = "order")
     private List<Product> products;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
 
     public Order() {
     }
@@ -68,14 +64,6 @@ public class Order  {
 
     public void setProducts(List<Product> products) {
         this.products = products;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override
