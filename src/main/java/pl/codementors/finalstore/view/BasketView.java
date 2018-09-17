@@ -107,11 +107,12 @@ public class BasketView implements Serializable {
         order.setCustomer(customer);
         order.setProducts(productsInBasket);
         order.setAdress(address);
+        store.addOrder(order);
         for (Product product : productsInBasket) {
             product.setAvailable(false);
+            product.setOrder(order);
             store.updateProduct(product);
         }
-        store.addOrder(order);
         productsInBasket = new ArrayList<>();
         address = "";
     }
