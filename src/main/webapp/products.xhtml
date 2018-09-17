@@ -21,6 +21,10 @@
                 #{product.price}
             </h:column>
             <h:column >
+                <f:facet name="header">Description</f:facet>
+                #{product.description}
+            </h:column>
+            <h:column rendered="#{roleView.admin || roleView.user}">
                 <f:facet name="header">Seller</f:facet>
                 #{product.seller.name}
             </h:column>
