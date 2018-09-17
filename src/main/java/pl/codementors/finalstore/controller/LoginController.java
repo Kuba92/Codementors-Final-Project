@@ -23,6 +23,8 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+
         String nickname = request.getParameter("j_username");
         String password = request.getParameter("j_password");
         Optional<User> userByNickAndPass = storeDAO.findUserByNickAndPass(nickname, password);
