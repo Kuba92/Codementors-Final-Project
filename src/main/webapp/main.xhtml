@@ -14,7 +14,10 @@
     <ui:define name="content">
         <f:view>
             <h:panelGroup layout="block" styleClass="topDiv">
-                <p:link value="Login" outcome="login.xhtml" styleClass="loginLink"/>
+                <!--<p:link value="Login" outcome="login.xhtml" styleClass="loginLink" rendered="#{mainView.loggedInCheck}"/>-->
+                <h:form>
+                    <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="j_idt10" styleClass="loginLink"  actionListener="#{mainView.logout}"/>
+                </h:form>
                 <p:link value="Register" outcome="register.xhtml" styleClass="registerLink"/>
             </h:panelGroup>
             <h:panelGroup layout="block" styleClass="menuTop">

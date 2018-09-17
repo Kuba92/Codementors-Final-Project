@@ -21,6 +21,9 @@ public class LoginController extends HttpServlet {
     @EJB
     private StoreDAO storeDAO;
 
+    @Inject
+    private User principal;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 

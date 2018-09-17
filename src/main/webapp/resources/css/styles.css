@@ -20,8 +20,6 @@
     margin-right: 200px;
     margin-left: 200px;
     position: relative;
-
-
 }
 
 .midDiv {
@@ -37,7 +35,10 @@
     right: 0;
 }
 .registerLink {
-    padding: 30px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-right: 40px;
     position: absolute;
     bottom: 0;
     right: 50px;

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.Optional;
 
 @Named
@@ -23,6 +24,9 @@ public class LoginView implements Serializable {
     private String username;
 
     private String password;
+
+    @Inject
+    private Principal principal;
 
     @EJB
     private StoreDAO dao;
@@ -58,4 +62,19 @@ public class LoginView implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void logout() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean loggedInCheck () {
+        return principal==null;
+    }
+
 }
