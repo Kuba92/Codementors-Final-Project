@@ -22,8 +22,7 @@ public class Order  {
     @Column
     private String adress;
 
-    @OneToMany
-    @JoinColumn(name = "product", referencedColumnName = "id")
+    @OneToMany (mappedBy = "order")
     private List<Product> products;
 
     @ManyToOne
