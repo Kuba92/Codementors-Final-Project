@@ -27,39 +27,12 @@
                 <f:facet name="header">Description</f:facet>
                 #{product.description}
             </h:column>
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<f:facet name="header">Role</f:facet>-->
-                <!--#{user.role}-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<f:facet name="header">Is Accepted?</f:facet>-->
-                <!--#{user.accepted}-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<h:button outcome="user_edit" value="Edit">-->
-                    <!--<f:param name="userId" value="#{user.id}"/>-->
-                <!--</h:button>-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<h:form>-->
-                    <!--<h:commandButton value="Delete User" action="#{allUsersList.removeUser(user)}"/>-->
-                <!--</h:form>-->
-            <!--</h:column>-->
-            <!--<h:column>-->
-                <!--<h:form>-->
-                    <!--<h:commandButton value="Accept user" actionListener="#{allUsersList.acceptUser(user, true)}"-->
-                                     <!--rendered="#{roleView.admin}" disabled="#{allUsersList.isUserAlreadyAccepted(user)}"/>-->
-                <!--</h:form>-->
-            <!--</h:column>-->
         </h:dataTable>
-        <!--<h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">-->
-            <!--<f:param name="userId" value="0"/>-->
-        <!--</h:button>-->
-        <!--<h:form rendered="#{roleView.user}">-->
-            <!--<h:button outcome="user_edit" value="Edit your profile">-->
-                <!--<f:param name="userId" value="#{allUsersList.currentUser.id}"/>-->
-            <!--</h:button>-->
-        <!--</h:form>-->
+        <h:form>
+            <h:button value="Add new" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
+                <f:param name="productId" value="0"/>
+            </h:button>
+        </h:form>
         <h:form>
             <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
         </h:form>

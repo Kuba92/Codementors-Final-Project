@@ -103,7 +103,7 @@ public class StoreDAO {
      */
 
     public void addProduct (Product product) {
-        em. persist(product);
+        em.persist(product);
     }
 
     /**
@@ -128,10 +128,7 @@ public class StoreDAO {
      * @param id
      * @return User
      */
-    @Path("{id}")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public User findUser (@PathParam("id") int id) {
+    public User findUser (int id) {
         Optional<User> user = Optional.ofNullable(em.find(User.class, id));
         if(user.isPresent()) {
             em.detach(user.get());
