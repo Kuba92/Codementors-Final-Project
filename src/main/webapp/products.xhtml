@@ -6,7 +6,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
-        <h:button outcome="basket_view.xhtml" value="Go to basket"/>
+        <h:button outcome="basket_view.xhtml" value="Go to basket" rendered="#{roleView.admin || roleView.user}"/>
         <h:dataTable value="#{productsList.productList}" var="product" >
             <h:column >
                 <f:facet name="header">ID</f:facet>
@@ -21,47 +21,26 @@
                 #{product.price}
             </h:column>
             <h:column >
-                <f:facet name="header">Seller</f:facet>
-                #{product.seller.name}
-            </h:column>
-            <h:column >
                 <f:facet name="header">Description</f:facet>
                 #{product.description}
             </h:column>
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<f:facet name="header">Role</f:facet>-->
-                <!--#{user.role}-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<f:facet name="header">Is Accepted?</f:facet>-->
-                <!--#{user.accepted}-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<h:button outcome="user_edit" value="Edit">-->
-                    <!--<f:param name="userId" value="#{user.id}"/>-->
-                <!--</h:button>-->
-            <!--</h:column>-->
-            <!--<h:column rendered="#{roleView.admin}">-->
-                <!--<h:form>-->
-                    <!--<h:commandButton value="Delete User" action="#{allUsersList.removeUser(user)}"/>-->
-                <!--</h:form>-->
-            <!--</h:column>-->
+            <h:column rendered="#{roleView.admin || roleView.user}">
+                <f:facet name="header">Seller</f:facet>
+                #{product.seller.name}
+            </h:column>
+            <h:column rendered="#{!roleView.admin &amp;&amp; !roleView.user}">
+                <f:facet name="header">Seller</f:facet>
+                Login to see seller details.
+            </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="Add to basket" action="#{productsList.addProductToBasket(product)}"
+                    <h:commandButton value="Add to basket" rendered="#{roleView.admin || roleView.user}"
+                                     action="#{productsList.addProductToBasket(product)}"
                                      disabled="#{productsList.addedToBasketOrNotAvailable(product)
                                      || productsList.isItMyOwnProduct(product)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>
-        <!--<h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">-->
-            <!--<f:param name="userId" value="0"/>-->
-        <!--</h:button>-->
-        <!--<h:form rendered="#{roleView.user}">-->
-            <!--<h:button outcome="user_edit" value="Edit your profile">-->
-                <!--<f:param name="userId" value="#{allUsersList.currentUser.id}"/>-->
-            <!--</h:button>-->
-        <!--</h:form>-->
         <h:form>
             <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
         </h:form>
