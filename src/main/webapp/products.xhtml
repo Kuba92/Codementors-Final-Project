@@ -6,6 +6,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
+        <h:button outcome="basket_view.xhtml" value="Go to basket"/>
         <h:dataTable value="#{productsList.productList}" var="product" >
             <h:column >
                 <f:facet name="header">ID</f:facet>
@@ -45,12 +46,12 @@
                     <!--<h:commandButton value="Delete User" action="#{allUsersList.removeUser(user)}"/>-->
                 <!--</h:form>-->
             <!--</h:column>-->
-            <!--<h:column>-->
-                <!--<h:form>-->
-                    <!--<h:commandButton value="Accept user" actionListener="#{allUsersList.acceptUser(user, true)}"-->
-                                     <!--rendered="#{roleView.admin}" disabled="#{allUsersList.isUserAlreadyAccepted(user)}"/>-->
-                <!--</h:form>-->
-            <!--</h:column>-->
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Add to basket" action="#{productsList.addProductToBasket(product)}"
+                                     disabled="#{productsList.addedToBasketOrNotAvailable(product)}"/>
+                </h:form>
+            </h:column>
         </h:dataTable>
         <!--<h:button outcome="user_edit" value="Add" rendered="#{roleView.admin}">-->
             <!--<f:param name="userId" value="0"/>-->
