@@ -2,6 +2,7 @@ package pl.codementors.finalstore.view;
 
 import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.Product;
+import pl.codementors.finalstore.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -17,6 +18,9 @@ public class ProductsList implements Serializable {
 
     @EJB
     private StoreDAO dao;
+
+    @EJB
+    private UserService userService;
 
     @Inject
     private BasketView basketView;
@@ -37,6 +41,10 @@ public class ProductsList implements Serializable {
     }
     public boolean addedToBasketOrNotAvailable (Product product) {
         return (basketView.getProductsInBasket().contains(product) || !product.isAvailable());
+    }
+
+    public boolean isItMyOwnProduct(Product product){
+        return (userService.getCurrentlyLoggedUser().get().getNickname().equals(product.getSeller().getNickname()));
     }
 
 
