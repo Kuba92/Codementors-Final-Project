@@ -6,6 +6,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
+        <h:button outcome="basket_view.xhtml" value="Go to basket" rendered="#{roleView.admin || roleView.user}"/>
         <h:dataTable value="#{productsList.productList}" var="product" >
             <h:column >
                 <f:facet name="header">ID</f:facet>
@@ -23,9 +24,17 @@
                 <f:facet name="header">Seller</f:facet>
                 #{product.seller.name}
             </h:column>
-            <h:column >
-                <f:facet name="header">Description</f:facet>
-                #{product.description}
+            <h:column rendered="#{!roleView.admin &amp;&amp; !roleView.user}">
+                <f:facet name="header">Seller</f:facet>
+                Login to see seller details.
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Add to basket" rendered="#{roleView.admin || roleView.user}"
+                                     action="#{productsList.addProductToBasket(product)}"
+                                     disabled="#{productsList.addedToBasketOrNotAvailable(product)
+                                     || productsList.isItMyOwnProduct(product)}"/>
+                </h:form>
             </h:column>
         </h:dataTable>
         <h:form>
