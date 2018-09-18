@@ -6,14 +6,9 @@ import pl.codementors.finalstore.model.User;
 
 import javax.ejb.Stateless;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
 
@@ -202,5 +197,10 @@ public class StoreDAO {
      */
     public void removeUser (User user) {
         em.remove(em.merge(user));
+    }
+
+    public List<Product> findUserProducts(int id) {
+        return em.createQuery("select p from Product p where p.seller.id=:id", Product.class)
+                .setParameter("id", id).getResultList();
     }
 }
