@@ -203,4 +203,9 @@ public class StoreDAO {
         return em.createQuery("select p from Product p where p.seller.id=:id", Product.class)
                 .setParameter("id", id).getResultList();
     }
+
+    public List<Order> findUserOrders(int id) {
+        return em.createQuery("SELECT o FROM Order o WHERE o.customer.id=:id", Order.class)
+                .setParameter("id", id).getResultList();
+    }
 }
