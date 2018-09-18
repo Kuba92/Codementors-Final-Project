@@ -34,9 +34,16 @@
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="midDiv">
         </h:panelGroup>
-        <section>
-            <ui:insert name="content"/>
-        </section>
+        <h:panelGroup layout="block" styleClass="mainCenter">
+            <p:layout style="width:1300px;min-height:700px;">
+                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
+                    <section>
+                        <ui:insert name="content"/>
+                    </section>
+                </p:layoutUnit>
+            </p:layout>
+        </h:panelGroup>
+
     </f:view>
 </h:body>
 </html>
