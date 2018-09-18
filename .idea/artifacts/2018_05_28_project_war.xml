@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="2018-05-28-project:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="FinalStore-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="2018-05-28-project:war exploded" />
+    </root>
+  </artifact>
+</component>

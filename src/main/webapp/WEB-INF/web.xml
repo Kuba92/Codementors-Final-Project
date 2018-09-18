@@ -33,13 +33,4 @@
     <security-role>
         <role-name>USER</role-name>
     </security-role>
-
-    <!--<filter>-->
-        <!--<filter-name>loginFilter</filter-name>-->
-        <!--<filter-class>pl.codementors.finalstore.LoginFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>loginFilter</filter-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
 </web-app>

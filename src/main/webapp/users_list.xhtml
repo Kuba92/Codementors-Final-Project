@@ -60,8 +60,5 @@
                 <f:param name="userId" value="#{allUsersList.currentUser.id}"/>
             </h:button>
         </h:form>
-        <h:form>
-            <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
-        </h:form>
     </ui:define>
 </ui:composition>

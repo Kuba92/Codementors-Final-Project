@@ -2,6 +2,7 @@ package pl.codementors.finalstore.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 
@@ -26,7 +27,7 @@ public class Product {
     private int price;
 
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
     private User seller;
 
     @Column(name = "availability")
