@@ -16,11 +16,27 @@
     <h:outputStylesheet library="css" name="styles.css"/>
 
 </h:head>
-<h:body styleClass="body">
+<h:body styleClass="rootView">
     <h:outputStylesheet library="css" name="styles.css"/>
 
-    <section>
-        <ui:insert name="content"/>
-    </section>
+    <f:view >
+        <h:panelGroup layout="block" styleClass="topDiv" id="panelId">
+            <h:form>
+                <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"  actionListener="#{mainView.logout}"/>
+            </h:form>
+            <p:link value="Register" outcome="register.xhtml" styleClass="registerLink"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="menuTop">
+            <p:layout style="width: 1300px; height: 50px">
+                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
+                </p:layoutUnit>
+            </p:layout>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="midDiv">
+        </h:panelGroup>
+        <section>
+            <ui:insert name="content"/>
+        </section>
+    </f:view>
 </h:body>
 </html>

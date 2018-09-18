@@ -14,6 +14,11 @@
     margin-left: 200px;
 
 }
+.rootView {
+    background-color: palegoldenrod;
+    display: block;
+    position: relative;
+}
 .topDiv {
     width:1300px;
     height:100px;
@@ -29,16 +34,16 @@
 }
 
 .loginLink {
-    padding: 30px;
+    padding-left: 50px;
+    padding-bottom: 30px;
     position: absolute;
     bottom: 0;
     right: 0;
 }
 .registerLink {
-    padding-top: 30px;
-    padding-left: 30px;
+
     padding-bottom: 30px;
-    padding-right: 40px;
+    padding-right: 20px;
     position: absolute;
     bottom: 0;
     right: 50px;
@@ -67,4 +72,5 @@
 body {
     display: block;
     position: relative;
+    background-color: lavender;
 }

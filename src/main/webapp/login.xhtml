@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
-        template="/template.xhtml"
-        xmlns:p="http://primefaces.org/ui">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>FinalStore</title>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Random store!"/>
+    <meta name="keywords" content="store, money"/>
+    <meta name="author" content="Maciek"/>
+    <meta name="author" content="Kuba"/>
+    <meta name="author" content="Grzegorz"/>
+    <h:outputStylesheet library="css" name="styles.css"/>
 
-<ui:define name="content">
+</h:head>
+<h:body styleClass="rootView">
         <!--<h:outputStylesheet name="css/styles.css"/>-->
 
             <h:form >
@@ -32,5 +41,7 @@
                 </h:panelGroup>
             </h:form>
 
-    </ui:define>
-</ui:composition>
+
+
+</h:body>
+</html>
