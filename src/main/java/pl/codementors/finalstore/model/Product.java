@@ -26,9 +26,8 @@ public class Product {
     @Column
     private int price;
 
-    @NotNull
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
     private User seller;
 
     @Column(name = "availability")
