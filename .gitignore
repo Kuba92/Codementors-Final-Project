@@ -1,0 +1,15 @@
+# Maven build files
+target/
+
+# Eclipse project files
+.classpath
+.project
+
+# Intellij project files
+*.iml
+*.ipr
+*.iws
+.idea/*
+
+# Intellij plugin files
+atlassian-ide-plugin.xml
