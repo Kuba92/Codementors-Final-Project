@@ -22,7 +22,7 @@ public class Order  {
     @Column
     private String adress;
 
-    @OneToMany (mappedBy = "order")
+    @OneToMany (mappedBy = "order", fetch = FetchType.EAGER)
     private List<Product> products;
 
     public Order() {

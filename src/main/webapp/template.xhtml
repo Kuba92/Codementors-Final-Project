@@ -21,13 +21,18 @@
     </header>
     <nav>
         <ul>
-            <li><h:button rendered="#{roleView.admin}" outcome="users_list" value="users list"/></li>
+            <li><h:button rendered="#{roleView.admin}" outcome="users_list" value="users list"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
             <li><h:button rendered="#{roleView.user}" outcome="users_list" value="your profile"/></li>
             <li><h:button outcome="products" value="List of products"/></li>
-            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_products" value="My products"/></li>
+            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_products" value="My products"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
+            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_orders" value="My orders"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
             <li><h:button rendered="#{!roleView.admin &amp;&amp; !roleView.user}" outcome="login" value="login"/></li>
             <h:form>
-                <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
+                <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout"
+                                 action="#{allUsersList.logout}"/>
             </h:form>
         </ul>
     </nav>
