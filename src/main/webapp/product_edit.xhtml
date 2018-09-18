@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        template="/template.xhtml">
+    <f:metadata>
+        <f:viewParam name="productId" value="#{productEdit.productId}"/>
+    </f:metadata>
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid columns="2">
+                <f:facet name="header">
+                    <h:outputText value="Product"/>
+                </f:facet>
+                <h:outputLabel value="Name" for="name"/>
+                <h:inputText id="name" value="#{productEdit.product.name}"/>
+                <h:outputLabel value="Description" for="description"/>
+                <h:inputText id="description" value="#{productEdit.product.description}"/>
+                <h:outputLabel value="Price" for="price"/>
+                <h:inputText id="price" value="#{productEdit.product.price}"/>
+                <h:outputLabel value="Availability" for="availability"/>
+                <h:selectBooleanCheckbox value="#{productEdit.product.available}" id="availability"/>
+            </h:panelGrid>
+            <h:commandButton action="my_products" actionListener="#{productEdit.updateProduct}" value="Save"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -11,14 +11,29 @@
     <meta name="keywords" content="store, money"/>
     <meta name="author" content="Maciek"/>
     <meta name="author" content="Kuba"/>
+    <meta name="author" content="Grzegorz"/>
+
 </h:head>
-<h:body>
+<h:body styleClass="body">
+    <h:outputStylesheet library="css" name="styles.css"/>
     <header>
         <h1>Welcome to our store!</h1>
     </header>
     <nav>
         <ul>
-            <li><h:link outcome="login" value="login"/></li>
+            <li><h:button rendered="#{roleView.admin}" outcome="users_list" value="users list"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
+            <li><h:button rendered="#{roleView.user}" outcome="users_list" value="your profile"/></li>
+            <li><h:button outcome="products" value="List of products"/></li>
+            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_products" value="My products"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
+            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_orders" value="My orders"
+                          disabled="#{!accessController.currentUser.accepted}"/></li>
+            <li><h:button rendered="#{!roleView.admin &amp;&amp; !roleView.user}" outcome="login" value="login"/></li>
+            <h:form>
+                <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout"
+                                 action="#{allUsersList.logout}"/>
+            </h:form>
         </ul>
     </nav>
     <section>

@@ -3,13 +3,9 @@ package pl.codementors.finalstore;
 import pl.codementors.finalstore.model.User;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import java.util.List;
 
 /**
  * Application store context.
@@ -19,10 +15,10 @@ import java.util.List;
 public class FinalStoreContext {
 
     /**
-     * Entity manager.
+     * UserDAO
      */
-    @PersistenceContext
-    private EntityManager em;
+    @EJB //wstrzykniety storeDAO zamiast em
+    private StoreDAO storeDAO;
 
     /**
      * Method adding default admin after deployment if users list is empty.
@@ -38,7 +34,7 @@ public class FinalStoreContext {
             admin.setEmail("");
             admin.setAccepted(true);
             admin.setRole(User.Role.ADMIN);
-            em.persist(admin);
+            storeDAO.addUser(admin);
         }
     }
 
@@ -48,10 +44,6 @@ public class FinalStoreContext {
      * @return Size of users list.
      */
     private int sizeOfDatabase() {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<User> query = cb.createQuery(User.class);
-        query.from(User.class);
-        List<User> users = em.createQuery(query).getResultList();
-        return users.size();
+        return storeDAO.findAllUsers().size();
     }
 }

@@ -5,13 +5,73 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
     <welcome-file-list>
-        <welcome-file>template.xhtml</welcome-file>
+        <welcome-file>products.xhtml</welcome-file>
     </welcome-file-list>
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>template</web-resource-name>
-            <url-pattern>/template.xhtml</url-pattern>
+            <web-resource-name>users list</web-resource-name>
+            <url-pattern>/users_list.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>basket</web-resource-name>
+            <url-pattern>/basket_view.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>orders</web-resource-name>
+            <url-pattern>/my_orders.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>my products</web-resource-name>
+            <url-pattern>/my_products.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>new offer</web-resource-name>
+            <url-pattern>/new_offer.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>product edit</web-resource-name>
+            <url-pattern>/product_edit.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ADMIN</role-name>
+            <role-name>USER</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>users edit</web-resource-name>
+            <url-pattern>/user_edit.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>ADMIN</role-name>

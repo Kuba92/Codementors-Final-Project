@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        template="/template.xhtml">
+    <ui:define name="content">
+        <h:dataTable value="#{userOrders.userOrders}" var="order">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{order.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Address</f:facet>
+                #{order.adress}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Products</f:facet>
+                <h:dataTable value="#{order.products}" var="product">
+                    <h:column>
+                        <f:facet name="header">Name</f:facet>
+                        #{product.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Price</f:facet>
+                        #{product.price}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Seller</f:facet>
+                        #{product.seller.nickname}
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
