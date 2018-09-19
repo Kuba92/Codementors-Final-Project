@@ -28,33 +28,27 @@
             <p:link value="Register" outcome="register.xhtml" styleClass="registerLink"/>
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="menuTop">
-            <p:layout style="width: 1300px; height: 50px">
-                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
+
                     <h:form>
-                        <p:commandButton action="users_list?faces-redirect=true" ajax="false" value="List of all users" rendered="#{roleView.admin}"/>
-                        <p:commandButton action="products?faces-redirect=true" ajax="false" value="Available products"/>
-                        <p:button outcome="user_edit?faces-redirect=true" value="Edit your details" rendered="#{!mainView.loggedInCheck}">
-                            <f:param name="userId" value="#{mainView.currentUser.id}"/>
-                        </p:button>
-                        <p:commandButton action="basket_view?faces-redirect=true" ajax="false" value="My basket" rendered="#{!mainView.loggedInCheck}"/>
-                        <p:commandButton action="my_orders?faces-redirect=true" ajax="false" value="My orders" rendered="#{!mainView.loggedInCheck}"/>
-                        <p:commandButton action="my_products?faces-redirect=true"  value="My products" rendered="#{!mainView.loggedInCheck}"/>
-
-
+                        <p:tabMenu>
+                            <p:menuitem action="users_list?faces-redirect=true" ajax="false" value="List of all users" rendered="#{roleView.admin}"/>
+                            <p:menuitem action="products?faces-redirect=true" ajax="false" value="Available products"/>
+                            <p:menuitem outcome="user_edit?faces-redirect=true" value="Edit your details" rendered="#{!mainView.loggedInCheck}">
+                                <f:param name="userId" value="#{mainView.currentUser.id}"/>
+                            </p:menuitem>
+                            <p:menuitem action="basket_view?faces-redirect=true" ajax="false" value="My basket" rendered="#{!mainView.loggedInCheck}"/>
+                            <p:menuitem action="my_orders?faces-redirect=true" ajax="false" value="My orders" rendered="#{!mainView.loggedInCheck}"/>
+                            <p:menuitem action="my_products?faces-redirect=true"  value="My products" rendered="#{!mainView.loggedInCheck}"/>
+                        </p:tabMenu>
 
 
                     </h:form>
 
-
-                </p:layoutUnit>
-
-            </p:layout>
         </h:panelGroup>
-        <h:panelGroup layout="block" styleClass="midDiv">
-        </h:panelGroup>
+
         <h:panelGroup layout="block" styleClass="mainCenter">
-            <p:layout style="width:1300px;min-height:700px;">
-                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
+            <p:layout style="width:1300px;min-height:700px;" styleClass="greyBack">
+                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300" styleClass="greyBack">
                     <section>
                         <ui:insert name="content"/>
                     </section>

@@ -31,7 +31,7 @@
                             <p:inputText id="password" name="password" required="true" value="#{loginView.password}" requiredMessage="Password required"/>
 
                         </h:panelGrid>
-                        <p:commandButton value="Login" type="submit" action="main.xhtml" actionListener="#{loginView.doPost()}" update="grid"/>
+                        <p:commandButton value="Login" action="products?faces-redirect=true"  actionListener="#{loginView.doPost()}"/>
                         <p:button outcome="register" value="Register" >
                             <f:param name="userId" value="0"/>
                         </p:button>

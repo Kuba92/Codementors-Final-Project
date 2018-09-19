@@ -33,7 +33,7 @@
                 <h:outputLabel value="Acceptance of the user:" for="acceptance" rendered="#{roleView.admin}"/>
                 <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance" rendered="#{roleView.admin}"/>
             </h:panelGrid>
-            <h:commandButton action="users_list" actionListener="#{userEdit.saveUser}" value="Save"/>
+            <p:commandButton action="user_edit?faces-redirect=true" actionListener="#{userEdit.saveUser}" value="Save"/>
         </h:form>
     </ui:define>
 </ui:composition>
