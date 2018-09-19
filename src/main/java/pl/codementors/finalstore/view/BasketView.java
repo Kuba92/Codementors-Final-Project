@@ -58,6 +58,10 @@ public class BasketView implements Serializable {
         return productsInBasket;
     }
 
+    public boolean isBasketEmpty() {
+        return productsInBasket.isEmpty();
+    }
+
     public void setProductsInBasket(List<Product> productsInBasket) {
         this.productsInBasket = productsInBasket;
     }
