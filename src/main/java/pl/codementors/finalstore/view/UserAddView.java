@@ -50,8 +50,8 @@ public class UserAddView implements Serializable {
     }
 
     /**
-     * Method appended to the Register new user button, if path param = 0, creaetes a new user
-     * and saves him to the database or if pathparam != 0 updates the selected user
+     * Method appended to the Register new user button, if path param = 0, creates a new user
+     * and saves him to the database or if path param != 0 updates the selected user
      *
      * @return
      */
