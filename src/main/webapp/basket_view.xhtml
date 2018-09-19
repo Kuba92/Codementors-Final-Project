@@ -22,15 +22,15 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="Remove from basket" action="#{basketView.removeProductFromBasket(product)}"/>
+                    <h:commandButton value="#{msg.basRemove}" action="#{basketView.removeProductFromBasket(product)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>
         <h:form>
             <h:panelGrid columns="2">
-                <p:outputLabel value="Address"/>
+                <p:outputLabel value="#{msg.basAddress}"/>
                 <p:inputText required="true" value="#{basketView.address}"/>
-                <p:commandButton value="Order now !" actionListener="#{basketView.makeOrder}" disabled="#{!basketView.basketEmpty}"/>
+                <p:commandButton value="#{msg.basOrder}" actionListener="#{basketView.makeOrder}" disabled="#{!basketView.basketEmpty}"/>
             </h:panelGrid>
         </h:form>
     </ui:define>
