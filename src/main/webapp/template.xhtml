@@ -14,7 +14,7 @@
     <meta name="author" content="Kuba"/>
     <meta name="author" content="Grzegorz"/>
     <h:outputStylesheet library="css" name="styles.css"/>
-
+    <f:loadBundle var="msg" basename="view.messages"/>
 </h:head>
 <h:body styleClass="rootView">
     <h:outputStylesheet library="css" name="styles.css"/>
@@ -23,22 +23,22 @@
         <h:panelGroup layout="block" styleClass="topDiv" id="panelId">
             <h:form>
                 <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"
-                               actionListener="#{mainView.logout}"/>
+                               actionListener="#{mainView.logout}" />
             </h:form>
-            <p:link value="Register" outcome="register.xhtml" styleClass="registerLink"/>
+            <p:link value="#{msg.register}" outcome="register.xhtml" styleClass="registerLink"/>
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="menuTop">
             <p:layout style="width: 1300px; height: 50px">
                 <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
                     <h:form>
-                        <p:commandButton action="users_list?faces-redirect=true" ajax="false" value="List of all users" rendered="#{roleView.admin}"/>
-                        <p:commandButton action="products?faces-redirect=true" ajax="false" value="Available products"/>
-                        <p:button outcome="user_edit?faces-redirect=true" value="Edit your details" rendered="#{!mainView.loggedInCheck}">
+                        <p:commandButton action="users_list?faces-redirect=true" ajax="false" value="#{msg.usersList}" rendered="#{roleView.admin}"/>
+                        <p:commandButton action="products?faces-redirect=true" ajax="false" value="#{msg.avProducts}"/>
+                        <p:button outcome="user_edit?faces-redirect=true" value="#{msg.editUrDetails}" rendered="#{!mainView.loggedInCheck}">
                             <f:param name="userId" value="#{mainView.currentUser.id}"/>
                         </p:button>
-                        <p:commandButton action="basket_view?faces-redirect=true" ajax="false" value="My basket" rendered="#{!mainView.loggedInCheck}"/>
-                        <p:commandButton action="my_orders?faces-redirect=true" ajax="false" value="My orders" rendered="#{!mainView.loggedInCheck}"/>
-                        <p:commandButton action="my_products?faces-redirect=true"  value="My products" rendered="#{!mainView.loggedInCheck}"/>
+                        <p:commandButton action="basket_view?faces-redirect=true" ajax="false" value="#{msg.myBasket}" rendered="#{!mainView.loggedInCheck}"/>
+                        <p:commandButton action="my_orders?faces-redirect=true" ajax="false" value="#{msg.myOrders}" rendered="#{!mainView.loggedInCheck}"/>
+                        <p:commandButton action="my_products?faces-redirect=true"  value="#{msg.myProducts}" rendered="#{!mainView.loggedInCheck}"/>
 
 
 
