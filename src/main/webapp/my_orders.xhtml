@@ -12,22 +12,22 @@
                 #{order.id}
             </h:column>
             <h:column>
-                <f:facet name="header">Address</f:facet>
+                <f:facet name="header">#{msg.basAddress}</f:facet>
                 #{order.adress}
             </h:column>
             <h:column>
-                <f:facet name="header">Products</f:facet>
+                <f:facet name="header">#{msg.orProducts}</f:facet>
                 <h:dataTable value="#{order.products}" var="product">
                     <h:column>
-                        <f:facet name="header">Name</f:facet>
+                        <f:facet name="header">#{msg.prName}</f:facet>
                         #{product.name}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Price</f:facet>
+                        <f:facet name="header">#{msg.prPrice}</f:facet>
                         #{product.price}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Seller</f:facet>
+                        <f:facet name="header">#{msg.prSeller}</f:facet>
                         #{product.seller.nickname}
                     </h:column>
                 </h:dataTable>
