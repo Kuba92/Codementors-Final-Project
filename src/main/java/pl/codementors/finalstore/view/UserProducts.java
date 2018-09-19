@@ -30,4 +30,9 @@ public class UserProducts implements Serializable {
         }
         return userProducts;
     }
+
+    public void deleteProduct(Product product) {
+        userProducts.remove(product);
+        dao.removeProduct(product);
+    }
 }

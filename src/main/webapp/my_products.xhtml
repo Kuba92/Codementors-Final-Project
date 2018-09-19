@@ -7,21 +7,31 @@
         template="/template.xhtml">
     <ui:define name="content">
         <h:dataTable value="#{userProducts.userProducts}" var="product">
-            <h:column >
+            <h:column>
                 <f:facet name="header">ID</f:facet>
                 #{product.id}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Name</f:facet>
                 #{product.name}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Price</f:facet>
                 #{product.price}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Description</f:facet>
                 #{product.description}
+            </h:column>
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Delete offer" action="#{userProducts.deleteProduct(product)}" rendered="#{product.available}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:button outcome="product_edit" value="Edit">
+                    <f:param name="productId" value="#{product.id}"/>
+                </h:button>
             </h:column>
         </h:dataTable>
         <h:button value="Add new" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
