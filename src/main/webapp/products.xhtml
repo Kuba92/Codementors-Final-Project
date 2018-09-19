@@ -6,21 +6,22 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         template="/template.xhtml">
     <ui:define name="content">
-        <h:button outcome="basket_view.xhtml" value="Go to basket" rendered="#{roleView.admin || roleView.user}"/>
-        <h:dataTable value="#{productsList.productList}" var="product" >
-            <h:column >
+        <h:button outcome="basket_view.xhtml" value="Go to basket" rendered="#{roleView.admin || roleView.user}"
+                  disabled="#{basketView.basketEmpty}"/>
+        <h:dataTable value="#{productsList.productList}" var="product">
+            <h:column>
                 <f:facet name="header">ID</f:facet>
                 #{product.id}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Name</f:facet>
                 #{product.name}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Price</f:facet>
                 #{product.price}
             </h:column>
-            <h:column >
+            <h:column>
                 <f:facet name="header">Description</f:facet>
                 #{product.description}
             </h:column>
@@ -45,9 +46,6 @@
             <h:button value="Add new" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
                 <f:param name="productId" value="0"/>
             </h:button>
-        </h:form>
-        <h:form>
-            <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout" action="#{allUsersList.logout}"/>
         </h:form>
     </ui:define>
 </ui:composition>

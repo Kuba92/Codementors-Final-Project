@@ -29,7 +29,7 @@
             <h:panelGrid columns="2">
                 <h:outputLabel value="Address"/>
                 <h:inputText required="true" value="#{basketView.address}"/>
-                <h:commandButton value="Order now !" actionListener="#{basketView.makeOrder}"/>
+                <h:commandButton value="Order now !" actionListener="#{basketView.makeOrder}" disabled="#{basketView.basketEmpty}"/>
             </h:panelGrid>
         </h:form>
     </ui:define>

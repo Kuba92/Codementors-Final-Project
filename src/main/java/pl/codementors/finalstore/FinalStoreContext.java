@@ -17,7 +17,7 @@ public class FinalStoreContext {
     /**
      * UserDAO
      */
-    @EJB //wstrzykniety storeDAO zamiast em
+    @EJB
     private StoreDAO storeDAO;
 
     /**
@@ -32,6 +32,7 @@ public class FinalStoreContext {
             admin.setNickname("admin");
             admin.setPassword("admin");
             admin.setEmail("");
+            admin.setEmail("admin@admin.com");
             admin.setAccepted(true);
             admin.setRole(User.Role.ADMIN);
             storeDAO.addUser(admin);
