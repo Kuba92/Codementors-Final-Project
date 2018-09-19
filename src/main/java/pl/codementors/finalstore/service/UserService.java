@@ -30,6 +30,7 @@ public class UserService {
 
     /**
      * Method getting currently logged user.
+     *
      * @return Optional of user or null.
      */
     public Optional<User> getCurrentlyLoggedUser() {

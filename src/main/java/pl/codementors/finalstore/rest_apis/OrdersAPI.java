@@ -26,35 +26,35 @@ public class OrdersAPI {
     @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Order> getAllOrders () {
-        return  storeDAO.findAllOrders();
+    public List<Order> getAllOrders() {
+        return storeDAO.findAllOrders();
     }
 
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Order getOrderbyId (@PathParam("id") int id) {
+    public Order getOrderbyId(@PathParam("id") int id) {
         return storeDAO.findOrder(id);
     }
 
     @Path("")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updateOrder (Order order) {
+    public void updateOrder(Order order) {
         storeDAO.updateOrder(order);
     }
 
     @Path("")
     @POST
     @Consumes
-    public void addOrder (Order order) {
+    public void addOrder(Order order) {
         storeDAO.addOrder(order);
     }
 
     @Path("")
     @DELETE
     @Consumes
-    public void removeOrder (Order order) {
+    public void removeOrder(Order order) {
         storeDAO.removeOrder(order);
     }
 }

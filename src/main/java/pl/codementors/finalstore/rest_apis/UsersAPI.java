@@ -1,4 +1,5 @@
 package pl.codementors.finalstore.rest_apis;
+
 import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.Order;
 import pl.codementors.finalstore.model.Product;
@@ -26,35 +27,35 @@ public class UsersAPI {
     @Path("")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getAllUsers () {
-        return  storeDAO.findAllUsers();
+    public List<User> getAllUsers() {
+        return storeDAO.findAllUsers();
     }
 
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUserbyId (@PathParam("id") int id) {
+    public User getUserbyId(@PathParam("id") int id) {
         return storeDAO.findUser(id);
     }
 
     @Path("")
     @POST
     @Consumes
-    public void addUser (User user) {
+    public void addUser(User user) {
         storeDAO.addUser(user);
     }
 
     @Path("")
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void updateUser (User user) {
+    public void updateUser(User user) {
         storeDAO.updateUser(user);
     }
 
     @Path("")
     @DELETE
     @Consumes
-    public void removeUser (User user) {
+    public void removeUser(User user) {
         storeDAO.removeUser(user);
     }
 }
