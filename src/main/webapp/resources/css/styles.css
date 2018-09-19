@@ -12,11 +12,14 @@
     min-height:120px;
     margin-right: 200px;
     margin-left: 200px;
+    background-color: lightgrey;
 }
 
 .menuTop div {
     overflow-x: hidden !important;
     overflow-y: hidden !important;
+    background-color: lightgrey;
+
 }
 
 .rootView {
@@ -71,6 +74,10 @@
     min-height:800px;
     margin-right: 200px;
     margin-left: 200px;
+    background-color: lightgrey;
+}
+.mainCenter div {
+    background-color: lightgrey;
 
 }
 
