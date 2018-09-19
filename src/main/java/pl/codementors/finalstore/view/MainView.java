@@ -2,6 +2,7 @@ package pl.codementors.finalstore.view;
 
 import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
+import pl.codementors.finalstore.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.bean.SessionScoped;
@@ -32,11 +33,16 @@ public class MainView {
     @EJB
     private StoreDAO dao;
 
+    @Inject
+    private UserService userService;
+
+
 
 
     public void logout() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 
         if (principal.getName()=="anonymous") {
             try {
@@ -49,7 +55,9 @@ public class MainView {
         } else {
             try {
                 request.logout();
-            } catch (ServletException e) {
+                context.getExternalContext().redirect(request.getContextPath() + "/main.xhtml");
+
+            } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
         }
@@ -64,8 +72,16 @@ public class MainView {
 
     }
 
+
     public String getLoginButtonLabel() {
         return (principal.getName() == "anonymous")?"Login" : "Logout";
     }
+
+
+
+    public User getCurrentUser() {
+        return userService.getCurrentlyLoggedUser().get();
+    }
+
 }
 

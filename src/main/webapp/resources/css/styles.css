@@ -9,11 +9,16 @@
 }
 .menuTop {
     width:1300px;
-    min-height:100px;
+    min-height:120px;
     margin-right: 200px;
     margin-left: 200px;
-
 }
+
+.menuTop div {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
 .rootView {
     background-color: palegoldenrod;
     display: block;

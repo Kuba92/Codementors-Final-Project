@@ -12,7 +12,10 @@ import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Named
 @ViewScoped
@@ -28,6 +31,9 @@ public class AllUsersList implements Serializable {
     @Inject
     private HttpServletRequest request;
 
+    @Inject
+    private Principal principal;
+
     private List<User> users;
 
 
@@ -42,9 +48,11 @@ public class AllUsersList implements Serializable {
         return users;
     }
 
+
     public User getCurrentUser() {
         return userService.getCurrentlyLoggedUser().get();
     }
+
 
     public void removeUser(User user){
         users.remove(user);

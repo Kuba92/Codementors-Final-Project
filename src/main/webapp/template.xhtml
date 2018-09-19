@@ -19,17 +19,27 @@
 <h:body styleClass="rootView">
     <h:outputStylesheet library="css" name="styles.css"/>
 
-    <f:view >
+    <f:view>
         <h:panelGroup layout="block" styleClass="topDiv" id="panelId">
             <h:form>
-                <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"  actionListener="#{mainView.logout}"/>
+                <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"
+                               actionListener="#{mainView.logout}"/>
             </h:form>
             <p:link value="Register" outcome="register.xhtml" styleClass="registerLink"/>
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="menuTop">
             <p:layout style="width: 1300px; height: 50px">
                 <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
+                    <p:commandButton action="users_list?faces-redirect=true" value="List"/>
+                    <p:commandButton action="products?faces-redirect=true" value="Products"/>
+                    <p:button outcome="user_edit?faces-redirect=true" value="Edit user" rendered="#{!mainView.loggedInCheck}">
+                        <f:param name="userId" value="#{mainView.currentUser.id}"/>
+                    </p:button>
+
+
+
                 </p:layoutUnit>
+
             </p:layout>
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="midDiv">
