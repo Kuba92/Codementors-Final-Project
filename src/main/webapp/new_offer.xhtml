@@ -15,7 +15,7 @@
                 <h:outputLabel value="description" for="description"/>
                 <h:inputText id="description" value="#{newProduct.product.description}"/>
             </h:panelGrid>
-            <h:commandButton actionListener="#{newProduct.saveProduct}" value="Save" action="products"/>
+            <h:commandButton actionListener="#{newProduct.saveProduct}" value="Save" action="products.xhtml?faces-redirect=true"/>
         </h:form>
     </ui:define>
 </ui:composition>

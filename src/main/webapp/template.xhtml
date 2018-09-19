@@ -30,12 +30,20 @@
         <h:panelGroup layout="block" styleClass="menuTop">
             <p:layout style="width: 1300px; height: 50px">
                 <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300">
-                    <p:commandButton action="users_list?faces-redirect=true" value="List"/>
-                    <p:commandButton action="products?faces-redirect=true" value="Products"/>
-                    <p:button outcome="user_edit?faces-redirect=true" value="Edit user" rendered="#{!mainView.loggedInCheck}">
-                        <f:param name="userId" value="#{mainView.currentUser.id}"/>
-                    </p:button>
+                    <h:form>
+                        <p:commandButton action="users_list?faces-redirect=true" ajax="false" value="List of all users" rendered="#{roleView.admin}"/>
+                        <p:commandButton action="products?faces-redirect=true" ajax="false" value="Available products"/>
+                        <p:button outcome="user_edit?faces-redirect=true" value="Edit your details" rendered="#{!mainView.loggedInCheck}">
+                            <f:param name="userId" value="#{mainView.currentUser.id}"/>
+                        </p:button>
+                        <p:commandButton action="basket_view?faces-redirect=true" ajax="false" value="My basket" rendered="#{!mainView.loggedInCheck}"/>
+                        <p:commandButton action="my_orders?faces-redirect=true" ajax="false" value="My orders" rendered="#{!mainView.loggedInCheck}"/>
+                        <p:commandButton action="my_products?faces-redirect=true"  value="My products" rendered="#{!mainView.loggedInCheck}"/>
 
+
+
+
+                    </h:form>
 
 
                 </p:layoutUnit>

@@ -1,6 +1,5 @@
 package pl.codementors.finalstore.view;
 
-import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 import pl.codementors.finalstore.service.UserService;
 

@@ -39,6 +39,7 @@ public class NewProduct implements Serializable {
     }
 
     public void saveProduct() {
+
         seller = service.getCurrentlyLoggedUser().get();
         product.setSeller(seller);
         product.setAvailable(true);

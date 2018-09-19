@@ -59,7 +59,12 @@ public class BasketView implements Serializable {
     }
 
     public boolean isBasketEmpty() {
-        return productsInBasket.isEmpty();
+        if (productsInBasket.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     public void setProductsInBasket(List<Product> productsInBasket) {
