@@ -42,6 +42,7 @@ public class FinalStoreContext {
 
     /**
      * Method checking size of users list.
+     *
      * @return Size of users list.
      */
     private int sizeOfDatabase() {

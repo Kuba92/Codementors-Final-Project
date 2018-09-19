@@ -9,10 +9,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * REST api class with orders.
+ */
 @Stateless
 @Path("orders")
 public class OrdersAPI {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO storeDAO;
 

@@ -5,6 +5,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 
+/**
+ * Role view class. Contains methods checking user role.
+ */
 @ViewScoped
 @Named
 public class RoleView implements Serializable {

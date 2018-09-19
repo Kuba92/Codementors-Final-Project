@@ -2,26 +2,36 @@ package pl.codementors.finalstore.view;
 
 import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.Product;
-import pl.codementors.finalstore.model.User;
 import pl.codementors.finalstore.service.UserService;
 
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * View class used to user products.
+ */
 @Named
 @ViewScoped
 public class UserProducts implements Serializable {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
-    StoreDAO dao;
+    private StoreDAO dao;
 
+    /**
+     * Bean EJB used to get currently logged user.
+     */
     @EJB
-    UserService service;
+    private UserService service;
 
+    /**
+     * List of user products.
+     */
     private List<Product> userProducts;
 
     public List<Product> getUserProducts() {
@@ -31,6 +41,11 @@ public class UserProducts implements Serializable {
         return userProducts;
     }
 
+    /**
+     * Method removing product.
+     *
+     * @param product Product to be removed.
+     */
     public void deleteProduct(Product product) {
         userProducts.remove(product);
         dao.removeProduct(product);

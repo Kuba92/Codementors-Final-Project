@@ -10,10 +10,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * REST api class with users.
+ */
 @Stateless
 @Path("users")
 public class UsersAPI {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO storeDAO;
 

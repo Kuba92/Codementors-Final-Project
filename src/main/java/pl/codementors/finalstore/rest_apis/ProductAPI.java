@@ -1,6 +1,5 @@
 package pl.codementors.finalstore.rest_apis;
 import pl.codementors.finalstore.StoreDAO;
-import pl.codementors.finalstore.model.Order;
 import pl.codementors.finalstore.model.Product;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -8,10 +7,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * REST api class with products.
+ */
 @Stateless
 @Path("products")
 public class ProductAPI {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO storeDAO;
 

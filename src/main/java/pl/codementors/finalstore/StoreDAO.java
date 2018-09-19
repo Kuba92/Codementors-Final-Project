@@ -12,80 +12,91 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * DAO class.
+ */
 @Stateless
 @Named
 public class StoreDAO {
 
 
     /**
-     * Declaring an Entity manager
+     * Declaring an Entity manager.
      */
     @PersistenceContext
     private EntityManager em;
 
     /**
      * Getting an order from the database by its id
-     * @param id
-     * @return Order
+     *
+     * @param id ID of searched order.
+     * @return Order.
      */
-    public Order findOrder (int id) {
+    public Order findOrder(int id) {
 
         return em.find(Order.class, id);
     }
 
     /**
-     * Get all orders in the database
+     * Get all orders in the database.
+     *
      * @return List<Order>
      */
-    public List<Order> findAllOrders () {
+    public List<Order> findAllOrders() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Order> query = cb.createQuery(Order.class);
         query.from(Order.class);
         List<Order> orderList = em.createQuery(query).getResultList();
         return orderList;
     }
+
     /**
-     * Add new order to the database
-     * @param order
+     * Add new order to the database.
+     *
+     * @param order Order to be added.
      */
-    public void addOrder (Order order) {
+    public void addOrder(Order order) {
         em.persist(order);
     }
 
     /**
-     * Update orders in the databse
-     * @param order
+     * Update orders in the database.
+     *
+     * @param order Order to be merged.
      */
-    public void updateOrder (Order order) {
+    public void updateOrder(Order order) {
         em.merge(order);
     }
 
     /**
-     * Remove order from the database
-     * @param order
+     * Remove order from the database.
+     *
+     * @param order Order to be removed.
      */
-    public void removeOrder (Order order) {
+    public void removeOrder(Order order) {
         em.remove(em.merge(order));
     }
 
     /**
-     * Method for getting an product from the database by its id
-     * @param id
-     * @return Product
+     * Method for getting an product from the database by its id.
+     *
+     * @param id ID of searched product.
+     * @return Product.
      */
 
-    public Product findProduct ( int id) {
+    public Product findProduct(int id) {
         return em.find(Product.class, id);
 
     }
 
     /**
-     * Method returning all products in the database
+     * Method returning all products in the database.
+     *
      * @return List<Product>
      */
 
-    public List<Product> findAllProducts () {
-        CriteriaBuilder cb =  em.getCriteriaBuilder();
+    public List<Product> findAllProducts() {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Product> query = cb.createQuery(Product.class);
         query.from(Product.class);
         List<Product> productsList = em.createQuery(query).getResultList();
@@ -93,39 +104,44 @@ public class StoreDAO {
     }
 
     /**
-     * Method to add new products to the database
-     * @param product
+     * Method to add new products to the database.
+     *
+     * @param product Product to be added.
      */
 
-    public void addProduct (Product product) {
+    public void addProduct(Product product) {
         em.persist(product);
     }
 
     /**
-     * Method to update products in the databse
-     * @param product
+     * Method to update products in the database.
+     *
+     * @param product Product to be merged.
      */
 
-    public void updateProduct (Product product) {
+    public void updateProduct(Product product) {
         em.merge(product);
     }
+
     /**
-     * Method to remove products from the database
-     * @param product
+     * Method to remove products from the database.
+     *
+     * @param product Product to be removed.
      */
 
-    public void removeProduct (Product product) {
+    public void removeProduct(Product product) {
         em.remove(em.merge(product));
     }
 
     /**
-     * Method for getting an user from the database by its id
-     * @param id
-     * @return User
+     * Method for getting an user from the database by its id.
+     *
+     * @param id ID of searched user.
+     * @return User.
      */
-    public User findUser (int id) {
+    public User findUser(int id) {
         Optional<User> user = Optional.ofNullable(em.find(User.class, id));
-        if(user.isPresent()) {
+        if (user.isPresent()) {
             em.detach(user.get());
             return user.get();
         } else {
@@ -134,9 +150,10 @@ public class StoreDAO {
     }
 
     /**
-     * Method for getting a user from the database by nickname and password
-     * @param nickname
-     * @param password
+     * Method for getting a user from the database by nickname and password.
+     *
+     * @param nickname Nickname of searched user.
+     * @param password Password of searched user.
      * @return User
      */
     public Optional<User> findUserByNickAndPass(String nickname, String password) {
@@ -151,9 +168,10 @@ public class StoreDAO {
     }
 
     /**
-     * Method for getting a user from the database by nickname only
-     * @param nickname
-     * @return User
+     * Method for getting a user from the database by nickname only.
+     *
+     * @param nickname Nickname of searched user.
+     * @return User.
      */
     public Optional<User> findUserByNickname(final String nickname) {
         try {
@@ -165,10 +183,11 @@ public class StoreDAO {
     }
 
     /**
-     * Method returning all users in the database
+     * Method returning all users in the database.
+     *
      * @return List<User>
      */
-    public List<User> findAllUsers () {
+    public List<User> findAllUsers() {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<User> query = cb.createQuery(User.class);
         query.from(User.class);
@@ -177,33 +196,49 @@ public class StoreDAO {
     }
 
     /**
-     * Method to update users in the database
-     * @param user
+     * Method to update users in the database.
+     *
+     * @param user User to be merged.
      */
-    public void updateUser (User user) {
+    public void updateUser(User user) {
         em.merge(user);
     }
+
     /**
-     * Method to add new users to the database
-     * @param user
+     * Method to add new users to the database.
+     *
+     * @param user User to be added.
      */
-    public void addUser (User user) {
+    public void addUser(User user) {
         em.persist(user);
     }
 
     /**
-     * Method to remove orders from the database
-     * @param user
+     * Method to remove orders from the database.
+     *
+     * @param user User to be removed.
      */
-    public void removeUser (User user) {
+    public void removeUser(User user) {
         em.remove(em.merge(user));
     }
 
+    /**
+     * Method finding products by its seller.
+     *
+     * @param id ID of products seller.
+     * @return List of user products.
+     */
     public List<Product> findUserProducts(int id) {
         return em.createQuery("select p from Product p where p.seller.id=:id", Product.class)
                 .setParameter("id", id).getResultList();
     }
 
+    /**
+     * Method finding orders by its customer.
+     *
+     * @param id ID of orders customer.
+     * @return List of user orders.
+     */
     public List<Order> findUserOrders(int id) {
         return em.createQuery("SELECT o FROM Order o WHERE o.customer.id=:id", Order.class)
                 .setParameter("id", id).getResultList();
