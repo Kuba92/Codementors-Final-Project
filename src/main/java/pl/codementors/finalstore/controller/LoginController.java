@@ -33,7 +33,7 @@ public class LoginController extends HttpServlet {
         if (userByNickAndPass.isPresent()) {
             request.login(nickname, password);
             request.getSession().setAttribute("user", userByNickAndPass.get());
-            response.sendRedirect(request.getContextPath() + "/main.xhtml");
+            response.sendRedirect(request.getContextPath() + "/products.xhtml");
         } else {
             response.sendRedirect(request.getContextPath() + "/error.xhtml");
         }

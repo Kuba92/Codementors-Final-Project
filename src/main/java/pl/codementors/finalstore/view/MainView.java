@@ -55,7 +55,7 @@ public class MainView {
         } else {
             try {
                 request.logout();
-                context.getExternalContext().redirect(request.getContextPath() + "/main.xhtml");
+                context.getExternalContext().redirect(request.getContextPath() + "/products.xhtml");
 
             } catch (ServletException | IOException e) {
                 e.printStackTrace();

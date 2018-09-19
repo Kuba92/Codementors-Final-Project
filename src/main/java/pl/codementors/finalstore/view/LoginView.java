@@ -41,7 +41,7 @@ public class LoginView implements Serializable {
         if (userByNickAndPass.isPresent()) {
             request.login(username, password);
             request.getSession().setAttribute("user", userByNickAndPass.get());
-            context.getExternalContext().redirect(request.getContextPath() + "/main.xhtml");
+            context.getExternalContext().redirect(request.getContextPath() + "/products.xhtml");
         } else {
             context.getExternalContext().redirect(request.getContextPath() + "/error.xhtml");
         }
@@ -68,7 +68,9 @@ public class LoginView implements Serializable {
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         try {
             request.logout();
-        } catch (ServletException e) {
+            context.getExternalContext().redirect(request.getContextPath() + "/products.xhtml");
+
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }

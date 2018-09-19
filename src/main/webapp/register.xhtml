@@ -47,9 +47,9 @@
                                 requiredMessage="Password is required."/>
                 </h:panelGrid>
                 <p:commandButton value="Register" id="btnSurname"
-                                 process="@this,surname,name,email,nickname,password " update="grid" action="main.xhtml?faces-redirect=true"
+                                 process="@this,surname,name,email,nickname,password " update="grid" action="products.xhtml?faces-redirect=true"
                                  actionListener="#{userAddView.addNewUser}"/>
-                <p:button value="Cancel" outcome="main.xhtml"/>
+                <p:button value="Cancel" outcome="products.xhtml"/>
             </p:panel>
         </h:panelGroup>
 

@@ -18,28 +18,30 @@
 </h:head>
 <h:body styleClass="rootView">
 
-            <h:form >
-                <h:panelGroup layout="block" styleClass="regPanel">
-                    <p:panel header="Login">
-                        <h:panelGrid columns="2" id="grid">
-                            <f:facet name="header">
-                                <p:messages id="msgs"/>
-                            </f:facet>
-                            <p:outputLabel for="username" value="Username"/>
-                            <p:inputText id="username" name="username" value="#{loginView.username}" required="true" requiredMessage="Username required"/>
-                            <p:outputLabel for="password" value="Password"/>
-                            <p:inputText id="password" name="password" required="true" value="#{loginView.password}" requiredMessage="Password required"/>
+    <h:form>
+        <h:panelGroup layout="block" styleClass="regPanel">
+            <p:panel header="Login">
+                <h:panelGrid columns="2" id="grid">
+                    <f:facet name="header">
+                        <p:messages id="msgs"/>
+                    </f:facet>
+                    <p:outputLabel for="username" value="Username"/>
+                    <p:inputText id="username" name="username" value="#{loginView.username}" required="true"
+                                 requiredMessage="Username required"/>
+                    <p:outputLabel for="password" value="Password"/>
+                    <p:inputText id="password" name="password" required="true" value="#{loginView.password}"
+                                 requiredMessage="Password required"/>
 
-                        </h:panelGrid>
-                        <p:commandButton value="Login" action="products?faces-redirect=true"  actionListener="#{loginView.doPost()}"/>
-                        <p:button outcome="register" value="Register" >
-                            <f:param name="userId" value="0"/>
-                        </p:button>
-                        <br/>
-                    </p:panel>
-                </h:panelGroup>
-            </h:form>
-
+                </h:panelGrid>
+                <p:commandButton value="Login"
+                                 actionListener="#{loginView.doPost()}" />
+                <p:button outcome="register" value="Register">
+                    <f:param name="userId" value="0"/>
+                </p:button>
+                <br/>
+            </p:panel>
+        </h:panelGroup>
+    </h:form>
 
 
 </h:body>

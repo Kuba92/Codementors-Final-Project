@@ -5,6 +5,8 @@ import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -41,10 +43,12 @@ public class UserEdit implements Serializable {
     }
 
     public void saveUser() {
+
         if (user.getId() == 0) {
             dao.addUser(user);
         } else {
             dao.updateUser(user);
+
         }
     }
 
@@ -57,4 +61,5 @@ public class UserEdit implements Serializable {
         }
         return rolesList;
     }
+
 }
