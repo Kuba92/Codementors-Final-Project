@@ -8,7 +8,7 @@
 
         template="/template.xhtml">
     <ui:define name="content">
-        <h:button outcome="basket_view.xhtml" value="Go to basket" rendered="#{roleView.admin || roleView.user}"
+        <h:button outcome="basket_view.xhtml" value="#{msg.prGoToBasket}" rendered="#{roleView.admin || roleView.user}"
                   disabled="#{basketView.basketEmpty}"/>
         <h:dataTable value="#{productsList.productList}" var="product">
             <h:column>
@@ -16,28 +16,28 @@
                 #{product.id}
             </h:column>
             <h:column>
-                <f:facet name="header">Name</f:facet>
+                <f:facet name="header">#{msg.prName}</f:facet>
                 #{product.name}
             </h:column>
             <h:column>
-                <f:facet name="header">Price</f:facet>
+                <f:facet name="header">#{msg.prPrice}</f:facet>
                 #{product.price}
             </h:column>
             <h:column>
-                <f:facet name="header">Description</f:facet>
+                <f:facet name="header">#{msg.prDescription}</f:facet>
                 #{product.description}
             </h:column>
             <h:column rendered="#{roleView.admin || roleView.user}">
-                <f:facet name="header">Seller</f:facet>
+                <f:facet name="header">#{msg.prSeller}</f:facet>
                 #{product.seller.name}
             </h:column>
             <h:column rendered="#{!roleView.admin &amp;&amp; !roleView.user}">
-                <f:facet name="header">Seller</f:facet>
+                <f:facet name="header">#{msg.prSeller}</f:facet>
                 Login to see seller details.
             </h:column>
             <h:column>
                 <h:form>
-                    <p:commandButton value="Add to basket" rendered="#{roleView.admin || roleView.user}"
+                    <p:commandButton value="#{msg.prAddToBasket}" rendered="#{roleView.admin || roleView.user}"
                                      actionListener="#{productsList.addProductToBasket(product)}"
                                      action="products?faces-redirect=true"
                                      disabled="#{productsList.addedToBasketOrNotAvailable(product)
@@ -46,7 +46,7 @@
             </h:column>
         </h:dataTable>
         <h:form>
-            <h:button value="Add new" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
+            <h:button value="#{msg.prAdd}" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
                 <f:param name="productId" value="0"/>
             </h:button>
         </h:form>

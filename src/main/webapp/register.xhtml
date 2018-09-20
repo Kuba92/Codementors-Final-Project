@@ -14,7 +14,7 @@
     <meta name="author" content="Kuba"/>
     <meta name="author" content="Grzegorz"/>
     <h:outputStylesheet library="css" name="styles.css"/>
-
+    <f:loadBundle var="msg" basename="view.messages"/>
 </h:head>
 <h:body styleClass="rootView">
     <h:form>
@@ -26,30 +26,30 @@
                         <p:messages id="msgs"/>
                     </f:facet>
 
-                    <p:outputLabel for="name" value="Name"/>
+                    <p:outputLabel for="name" value="#{msg.usName}"/>
                     <p:inputText id="name" value="#{userAddView.user.name}" required="true"
-                                 requiredMessage="Name is required."/>
+                                 requiredMessage="#{msg.regReqName}"/>
 
-                    <p:outputLabel for="surname" value="Surname:"/>
+                    <p:outputLabel for="surname" value="#{msg.usSurname}"/>
                     <p:inputText id="surname" value="#{userAddView.user.surname}" required="true"
-                                 requiredMessage="Surname is required."/>
+                                 requiredMessage="#{msg.regReqSurname}"/>
 
                     <p:outputLabel for="email" value="Email:"/>
                     <p:inputText id="email" value="#{userAddView.user.email}" required="true"
-                                 requiredMessage="Email is required."/>
+                                 requiredMessage="#{msg.regRegEmail}"/>
 
-                    <p:outputLabel for="nickname" value="Login:"/>
+                    <p:outputLabel for="nickname" value="#{msg.usNickname}"/>
                     <p:inputText id="nickname" value="#{userAddView.user.nickname}" required="true"
-                                 requiredMessage="Login is required."/>
+                                 requiredMessage="#{msg.regReqU}"/>
 
-                    <p:outputLabel for="password" value="Password:"/>
+                    <p:outputLabel for="password" value="#{msg.usPassword}"/>
                     <p:password id="password" value="#{userAddView.user.password}" required="true"
-                                requiredMessage="Password is required."/>
+                                requiredMessage="#{msg.regReqP}"/>
                 </h:panelGrid>
-                <p:commandButton value="Register" id="btnSurname"
+                <p:commandButton value="#{msg.reqRegister}" id="btnSurname"
                                  process="@this,surname,name,email,nickname,password " update="grid" action="products.xhtml?faces-redirect=true"
                                  actionListener="#{userAddView.addNewUser}"/>
-                <p:button value="Cancel" outcome="products.xhtml"/>
+                <p:button value="#{msg.regCancel}" outcome="products.xhtml"/>
             </p:panel>
         </h:panelGroup>
 

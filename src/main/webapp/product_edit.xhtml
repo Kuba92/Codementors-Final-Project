@@ -14,18 +14,18 @@
         <h:form>
             <h:panelGrid columns="2">
                 <f:facet name="header">
-                    <h:outputText value="Product"/>
+                    <h:outputText value="#{msg.prProduct}"/>
                 </f:facet>
-                <h:outputLabel value="Name" for="name"/>
+                <h:outputLabel value="#{msg.prName}" for="name"/>
                 <h:inputText id="name" value="#{productEdit.product.name}"/>
-                <h:outputLabel value="Description" for="description"/>
+                <h:outputLabel value="#{msg.prDescription}" for="description"/>
                 <h:inputText id="description" value="#{productEdit.product.description}"/>
-                <h:outputLabel value="Price" for="price"/>
+                <h:outputLabel value="#{msg.prPrice}" for="price"/>
                 <h:inputText id="price" value="#{productEdit.product.price}"/>
-                <h:outputLabel value="Availability" for="availability"/>
+                <h:outputLabel value="#{msg.prAvailability}" for="availability"/>
                 <h:selectBooleanCheckbox value="#{productEdit.product.available}" id="availability"/>
             </h:panelGrid>
-            <h:commandButton action="my_products?faces-redirect=true" actionListener="#{productEdit.updateProduct}" value="Save"/>
+            <h:commandButton action="my_products?faces-redirect=true" actionListener="#{productEdit.updateProduct}" value="#{msg.prSave}"/>
         </h:form>
     </ui:define>
 </ui:composition>

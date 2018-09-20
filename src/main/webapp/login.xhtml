@@ -14,7 +14,7 @@
     <meta name="author" content="Kuba"/>
     <meta name="author" content="Grzegorz"/>
     <h:outputStylesheet library="css" name="styles.css"/>
-
+    <f:loadBundle var="msg" basename="view.messages"/>
 </h:head>
 <h:body styleClass="rootView">
 
@@ -25,24 +25,22 @@
                     <f:facet name="header">
                         <p:messages id="msgs"/>
                     </f:facet>
-                    <p:outputLabel for="username" value="Username"/>
+                    <p:outputLabel for="username" value="#{msg.logUsername}"/>
                     <p:inputText id="username" name="username" value="#{loginView.username}" required="true"
-                                 requiredMessage="Username required"/>
-                    <p:outputLabel for="password" value="Password"/>
+                                 requiredMessage="#{msg.logReqU}"/>
+                    <p:outputLabel for="password" value="#{msg.logPassword}"/>
                     <p:password id="password" name="password" required="true" value="#{loginView.password}"
-                                 requiredMessage="Password required"/>
+                                 requiredMessage="#{msg.logReqP}"/>
 
                 </h:panelGrid>
-                <p:commandButton value="Login"
+                <p:commandButton value="#{msg.logLogin}"
                                  actionListener="#{loginView.doPost()}" />
-                <p:button outcome="register" value="Register">
+                <p:button outcome="register" value="#{msg.logRegister}">
                     <f:param name="userId" value="0"/>
                 </p:button>
                 <br/>
             </p:panel>
         </h:panelGroup>
     </h:form>
-
-
 </h:body>
 </html>

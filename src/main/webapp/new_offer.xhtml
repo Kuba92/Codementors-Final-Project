@@ -10,11 +10,11 @@
     <ui:define name="content">
         <h:form>
             <h:panelGrid columns="2">
-                <h:outputLabel value="name" for="name"/>
+                <h:outputLabel value="#{msg.prName}" for="name"/>
                 <h:inputText id="name" value="#{newProduct.product.name}"/>
-                <h:outputLabel value="price" for="price"/>
+                <h:outputLabel value="#{msg.prPrice}" for="price"/>
                 <h:inputText id="price" value="#{newProduct.product.price}"/>
-                <h:outputLabel value="description" for="description"/>
+                <h:outputLabel value="#{msg.prDescription}" for="description"/>
                 <h:inputText id="description" value="#{newProduct.product.description}"/>
             </h:panelGrid>
             <h:commandButton actionListener="#{newProduct.saveProduct}" value="Save" action="products.xhtml?faces-redirect=true"/>
