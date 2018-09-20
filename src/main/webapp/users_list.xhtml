@@ -44,13 +44,16 @@
             </h:column>
             <h:column rendered="#{roleView.admin}">
                 <h:form>
-                    <h:commandButton value="#{msg.usDelete}" action="#{allUsersList.removeUser(user)}"/>
+                    <h:commandButton value="#{msg.usDelete}" actionListener="#{allUsersList.removeUser(user)}"
+                                     action="users_list?faces-redirect=true"/>
                 </h:form>
             </h:column>
             <h:column>
                 <h:form>
                     <h:commandButton value="#{msg.usAccept}" actionListener="#{allUsersList.acceptUser(user, true)}"
-                                     rendered="#{roleView.admin}" disabled="#{allUsersList.isUserAlreadyAccepted(user)}"/>
+                                     rendered="#{roleView.admin}"
+                                     disabled="#{allUsersList.isUserAlreadyAccepted(user)}"
+                                     action="users_list?faces-redirect=true"/>
                 </h:form>
             </h:column>
         </h:dataTable>
@@ -58,7 +61,7 @@
             <f:param name="userId" value="0"/>
         </h:button>
         <h:form rendered="#{roleView.user}">
-            <h:button outcome="user_edit" value="#{msg.usEditUrProf}" rendered="#{allUsersList.currentUser.accepted}" >
+            <h:button outcome="user_edit" value="#{msg.usEditUrProf}" rendered="#{allUsersList.currentUser.accepted}">
                 <f:param name="userId" value="#{allUsersList.currentUser.id}"/>
             </h:button>
         </h:form>

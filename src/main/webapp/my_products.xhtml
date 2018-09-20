@@ -8,7 +8,8 @@
 
         template="/template.xhtml">
     <ui:define name="content">
-        <h:dataTable value="#{userProducts.userProducts}" var="product">
+        <h:dataTable value="#{userProducts.userProducts}" var="product"
+                     rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 #{product.id}
@@ -27,7 +28,9 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="#{msg.prDeleteOff}" action="my_products?faces-redirect=true" actionListener="#{userProducts.deleteProduct(product)}" rendered="#{product.available}"/>
+                    <h:commandButton value="#{msg.prDeleteOff}" action="my_products?faces-redirect=true"
+                                     actionListener="#{userProducts.deleteProduct(product)}"
+                                     rendered="#{product.available}"/>
                 </h:form>
             </h:column>
             <h:column>

@@ -23,32 +23,44 @@
         <h:panelGroup layout="block" styleClass="topDiv" id="panelId">
             <h:form>
                 <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"
-                               actionListener="#{mainView.logout}" />
+                               actionListener="#{mainView.logout}"/>
             </h:form>
             <p:link value="#{msg.register}" outcome="register.xhtml" styleClass="registerLink"/>
         </h:panelGroup>
         <h:panelGroup layout="block" styleClass="menuTop">
 
-                    <h:form>
-                        <p:tabMenu>
-                            <p:menuitem action="users_list?faces-redirect=true" ajax="false" value="#{msg.usersList}" rendered="#{roleView.admin}"/>
-                            <p:menuitem action="products?faces-redirect=true" ajax="false" value="#{msg.avProducts}"/>
-                            <p:menuitem outcome="user_edit?faces-redirect=true" value="#{msg.editUrDetails}" rendered="#{!mainView.loggedInCheck}">
-                                <f:param name="userId" value="#{mainView.currentUser.id}"/>
-                            </p:menuitem>
-                            <p:menuitem action="basket_view?faces-redirect=true" ajax="false" value="#{msg.myBasket}" rendered="#{!mainView.loggedInCheck}"/>
-                            <p:menuitem action="my_orders?faces-redirect=true" ajax="false" value="#{msg.myOrders}" rendered="#{!mainView.loggedInCheck}"/>
-                            <p:menuitem action="my_products?faces-redirect=true"  value="#{msg.myProducts}" rendered="#{!mainView.loggedInCheck}"/>
-                        </p:tabMenu>
+            <h:form>
+                <p:tabMenu>
+                    <p:menuitem action="users_list?faces-redirect=true" ajax="false" value="#{msg.usersList}"
+                                rendered="#{roleView.admin}"/>
+                    <p:menuitem action="products?faces-redirect=true" ajax="false" value="#{msg.avProducts}"/>
+                    <p:menuitem outcome="user_edit?faces-redirect=true" value="#{msg.editUrDetails}"
+                                rendered="#{!mainView.loggedInCheck}">
+                        <f:param name="userId" value="#{mainView.currentUser.id}"/>
+                    </p:menuitem>
+                    <p:menuitem action="basket_view?faces-redirect=true" ajax="false" value="#{msg.myBasket}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                    <p:menuitem action="my_orders?faces-redirect=true" ajax="false" value="#{msg.myOrders}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                    <p:menuitem action="my_products?faces-redirect=true" value="#{msg.myProducts}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                </p:tabMenu>
 
 
-                    </h:form>
-
+            </h:form>
+            <div style="text-align: center; color: #4f4f4f">
+                <h:outputLabel rendered="#{roleView.user &amp;&amp; !mainView.currentUser.accepted}"
+                               value="#{msg.accepted}"/>
+            </div>
         </h:panelGroup>
 
         <h:panelGroup layout="block" styleClass="mainCenter">
             <p:layout style="width:1300px;min-height:700px;" styleClass="greyBack">
-                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300" styleClass="greyBack">
+                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300"
+                              styleClass="greyBack">
                     <section>
                         <ui:insert name="content"/>
                     </section>

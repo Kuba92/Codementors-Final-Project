@@ -8,7 +8,8 @@
 
         template="/template.xhtml">
     <ui:define name="content">
-        <h:dataTable value="#{userOrders.userOrders}" var="order">
+        <h:dataTable value="#{userOrders.userOrders}" var="order"
+                     rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 #{order.id}

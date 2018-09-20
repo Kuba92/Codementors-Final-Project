@@ -47,7 +47,8 @@
                                 requiredMessage="#{msg.regReqP}"/>
                 </h:panelGrid>
                 <p:commandButton value="#{msg.reqRegister}" id="btnSurname"
-                                 process="@this,surname,name,email,nickname,password " update="grid" action="products.xhtml?faces-redirect=true"
+                                 process="@this,surname,name,email,nickname,password " update="grid"
+                                 action="products.xhtml?faces-redirect=true"
                                  actionListener="#{userAddView.addNewUser}"/>
                 <p:button value="#{msg.regCancel}" outcome="products.xhtml"/>
             </p:panel>

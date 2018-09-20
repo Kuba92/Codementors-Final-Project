@@ -12,7 +12,8 @@
     </f:metadata>
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2"
+                         rendered="#{roleView.admin || (roleView.user &amp;&amp; userEdit.userId == mainView.currentUser.id)}">
                 <f:facet name="header">
                     <h:outputText value="#{msg.usUser}"/>
                 </f:facet>
@@ -24,16 +25,22 @@
                 <h:inputText id="email" value="#{userEdit.user.email}"/>
                 <h:outputLabel value="#{msg.usNickname}" for="nickname"/>
                 <h:inputText id="nickname" value="#{userEdit.user.nickname}"/>
-                <h:outputLabel for="password" value="#{msg.usPassword}" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
-                <h:inputText id="password" value="#{userEdit.user.password}" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
+                <h:outputLabel for="password" value="#{msg.usPassword}"
+                               rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)
+                               || (roleView.admin &amp;&amp; userEdit.userId == mainView.currentUser.id)}"/>
+                <h:inputText id="password" value="#{userEdit.user.password}"
+                             rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)
+                             || (roleView.admin &amp;&amp; userEdit.userId == mainView.currentUser.id)}"/>
                 <h:outputLabel value="#{msg.usRole}:" for="role" rendered="#{roleView.admin}"/>
                 <h:selectOneRadio id="role" value="#{userEdit.user.role}" rendered="#{roleView.admin}">
                     <f:selectItems value="#{userEdit.roles}"/>
                 </h:selectOneRadio>
                 <h:outputLabel value="#{msg.usAccept}" for="acceptance" rendered="#{roleView.admin}"/>
-                <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance" rendered="#{roleView.admin}"/>
+                <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance"
+                                         rendered="#{roleView.admin}"/>
             </h:panelGrid>
-            <p:button action="user_edit?faces-redirect=true" actionListener="#{userEdit.saveUser}" value="#{msg.usSave}">
+            <p:button action="user_edit?faces-redirect=true" actionListener="#{userEdit.saveUser}" value="#{msg.usSave}"
+                      rendered="#{roleView.admin || (roleView.user &amp;&amp; userEdit.userId == mainView.currentUser.id)}">
                 <f:param name="userId" value="#{mainView.currentUser.id}"/>
             </p:button>
         </h:form>

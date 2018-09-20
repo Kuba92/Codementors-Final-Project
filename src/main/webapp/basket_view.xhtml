@@ -22,15 +22,18 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="#{msg.basRemove}" action="basket_view?faces-redirect=true" actionListener="#{basketView.removeProductFromBasket(product)}"/>
+                    <h:commandButton value="#{msg.basRemove}" action="basket_view?faces-redirect=true"
+                                     actionListener="#{basketView.removeProductFromBasket(product)}"/>
                 </h:form>
             </h:column>
         </h:dataTable>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2"
+                         rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}">
                 <p:outputLabel value="#{msg.basAddress}"/>
-                <p:inputText required="true" value="#{basketView.address}"/>
-                <p:commandButton value="#{msg.basOrder}" actionListener="#{basketView.makeOrder}" action="products?faces-redirect=true" disabled="#{!basketView.basketEmpty}"/>
+                <p:inputText disabled="#{!basketView.basketEmpty}" required="true" value="#{basketView.address}"/>
+                <p:commandButton value="#{msg.basOrder}" actionListener="#{basketView.makeOrder}"
+                                 action="products?faces-redirect=true" disabled="#{!basketView.basketEmpty}"/>
             </h:panelGrid>
         </h:form>
     </ui:define>

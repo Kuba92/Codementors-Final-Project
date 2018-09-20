@@ -30,11 +30,11 @@
                                  requiredMessage="#{msg.logReqU}"/>
                     <p:outputLabel for="password" value="#{msg.logPassword}"/>
                     <p:password id="password" name="password" required="true" value="#{loginView.password}"
-                                 requiredMessage="#{msg.logReqP}"/>
+                                requiredMessage="#{msg.logReqP}"/>
 
                 </h:panelGrid>
                 <p:commandButton value="#{msg.logLogin}"
-                                 actionListener="#{loginView.doPost()}" />
+                                 actionListener="#{loginView.doPost()}"/>
                 <p:button outcome="register" value="#{msg.logRegister}">
                     <f:param name="userId" value="0"/>
                 </p:button>

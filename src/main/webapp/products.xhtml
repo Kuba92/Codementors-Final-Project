@@ -8,7 +8,8 @@
 
         template="/template.xhtml">
     <ui:define name="content">
-        <h:button outcome="basket_view.xhtml" value="#{msg.prGoToBasket}" rendered="#{roleView.admin || roleView.user}"
+        <h:button outcome="basket_view.xhtml" value="#{msg.prGoToBasket}"
+                  rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}"
                   disabled="#{basketView.basketEmpty}"/>
         <h:dataTable value="#{productsList.productList}" var="product">
             <h:column>
@@ -37,7 +38,8 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <p:commandButton value="#{msg.prAddToBasket}" rendered="#{roleView.admin || roleView.user}"
+                    <p:commandButton value="#{msg.prAddToBasket}"
+                                     rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}"
                                      actionListener="#{productsList.addProductToBasket(product)}"
                                      action="products?faces-redirect=true"
                                      disabled="#{productsList.addedToBasketOrNotAvailable(product)
@@ -46,7 +48,9 @@
             </h:column>
         </h:dataTable>
         <h:form>
-            <h:button value="#{msg.prAdd}" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
+            <h:button value="#{msg.prAdd}"
+                      rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}"
+                      outcome="new_offer">
                 <f:param name="productId" value="0"/>
             </h:button>
         </h:form>

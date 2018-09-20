@@ -12,7 +12,8 @@
     </f:metadata>
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted
+                &amp;&amp; productEdit.product.seller == mainView.currentUser)}">
                 <f:facet name="header">
                     <h:outputText value="#{msg.prProduct}"/>
                 </f:facet>
@@ -25,7 +26,10 @@
                 <h:outputLabel value="#{msg.prAvailability}" for="availability"/>
                 <h:selectBooleanCheckbox value="#{productEdit.product.available}" id="availability"/>
             </h:panelGrid>
-            <h:commandButton action="my_products?faces-redirect=true" actionListener="#{productEdit.updateProduct}" value="#{msg.prSave}"/>
+            <h:commandButton action="my_products?faces-redirect=true" actionListener="#{productEdit.updateProduct}"
+                             value="#{msg.prSave}"
+                             rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted
+                             &amp;&amp; productEdit.product.seller == mainView.currentUser)}"/>
         </h:form>
     </ui:define>
 </ui:composition>

@@ -9,7 +9,8 @@
         template="/template.xhtml">
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2"
+                         rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}">
                 <h:outputLabel value="#{msg.prName}" for="name"/>
                 <h:inputText id="name" value="#{newProduct.product.name}"/>
                 <h:outputLabel value="#{msg.prPrice}" for="price"/>
@@ -17,7 +18,9 @@
                 <h:outputLabel value="#{msg.prDescription}" for="description"/>
                 <h:inputText id="description" value="#{newProduct.product.description}"/>
             </h:panelGrid>
-            <h:commandButton actionListener="#{newProduct.saveProduct}" value="Save" action="products.xhtml?faces-redirect=true"/>
+            <h:commandButton actionListener="#{newProduct.saveProduct}" value="Save"
+                             action="products.xhtml?faces-redirect=true"
+                             rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}"/>
         </h:form>
     </ui:define>
 </ui:composition>
