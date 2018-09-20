@@ -17,6 +17,9 @@ import java.io.Serializable;
 import java.security.Principal;
 import java.util.Optional;
 
+/**
+ * View used to login form.
+ */
 @Named
 @ViewScoped
 public class LoginView implements Serializable {
@@ -25,9 +28,15 @@ public class LoginView implements Serializable {
 
     private String password;
 
+    /**
+     * Principal object.
+     */
     @Inject
     private Principal principal;
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO dao;
 

@@ -9,36 +9,34 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.SecurityContext;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Objects;
-import java.util.Optional;
 
+/**
+ * Main view class.
+ */
 @Named
 @SessionScoped
 public class MainView {
 
-    private String username;
-
-    private String password;
-
+    /**
+     * Principal object.
+     */
     @Inject
     private Principal principal;
 
-    @EJB
-    private StoreDAO dao;
-
+    /**
+     * Bean EJB used to get currently logged user.
+     */
     @Inject
     private UserService userService;
 
-
-
-
+    /**
+     * Logout method.
+     */
     public void logout() {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();

@@ -81,7 +81,7 @@ public class AllUsersList implements Serializable {
      *
      * @param user User to be removed.
      */
-    public void removeUser(User user){
+    public void removeUser(User user) {
         users.remove(user);
         dao.removeUser(user);
     }
