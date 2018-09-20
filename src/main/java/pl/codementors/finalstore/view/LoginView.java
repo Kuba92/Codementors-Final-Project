@@ -43,7 +43,6 @@ public class LoginView implements Serializable {
     public void doPost() throws IOException, ServletException {
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 
         Optional<User> userByNickAndPass = dao.findUserByNickAndPass(username, password);
 
