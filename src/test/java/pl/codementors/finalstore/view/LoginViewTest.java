@@ -1,6 +1,5 @@
 package pl.codementors.finalstore.view;
 
-import org.hamcrest.core.AnyOf;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,20 +17,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.util.Optional;
-
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(FacesContext.class)
 public class LoginViewTest {
-    @Mock
-    private Principal principal;
 
     @Mock
     private FacesContext facesContext;
@@ -47,6 +40,12 @@ public class LoginViewTest {
 
     @Mock
     private StoreDAO dao;
+
+    @Mock
+    private HttpSession httpSession;
+
+    @Mock
+    private User user;
 
     @Before
     public void setup() {
@@ -68,7 +67,7 @@ public class LoginViewTest {
 
     @Test
     public void should_log_user() throws IOException, ServletException {
-        User user = dao.findUser(anyInt());
+        Mockito.when(request.getSession()).thenReturn(httpSession);
         Mockito.when(dao.findUserByNickAndPass(user.getNickname(), user.getPassword())).thenReturn(Optional.of(user));
 
         loginView.doPost();
