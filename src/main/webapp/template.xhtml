@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>FinalStore</title>
@@ -12,32 +13,61 @@
     <meta name="author" content="Maciek"/>
     <meta name="author" content="Kuba"/>
     <meta name="author" content="Grzegorz"/>
-
-</h:head>
-<h:body styleClass="body">
     <h:outputStylesheet library="css" name="styles.css"/>
-    <header>
-        <h1>Welcome to our store!</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><h:button rendered="#{roleView.admin}" outcome="users_list" value="users list"
-                          disabled="#{!accessController.currentUser.accepted}"/></li>
-            <li><h:button rendered="#{roleView.user}" outcome="users_list" value="your profile"/></li>
-            <li><h:button outcome="products" value="List of products"/></li>
-            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_products" value="My products"
-                          disabled="#{!accessController.currentUser.accepted}"/></li>
-            <li><h:button rendered="#{roleView.admin || roleView.user}" outcome="my_orders" value="My orders"
-                          disabled="#{!accessController.currentUser.accepted}"/></li>
-            <li><h:button rendered="#{!roleView.admin &amp;&amp; !roleView.user}" outcome="login" value="login"/></li>
+    <f:loadBundle var="msg" basename="view.messages"/>
+</h:head>
+<h:body styleClass="rootView">
+    <h:outputStylesheet library="css" name="styles.css"/>
+
+    <f:view>
+        <h:panelGroup layout="block" styleClass="topDiv" id="panelId">
             <h:form>
-                <h:commandButton rendered="#{roleView.admin || roleView.user}" value="Logout"
-                                 action="#{allUsersList.logout}"/>
+                <p:commandLink value="#{mainView.loginButtonLabel}" ajax="true" update="panelId" styleClass="loginLink"
+                               actionListener="#{mainView.logout}"/>
             </h:form>
-        </ul>
-    </nav>
-    <section>
-        <ui:insert name="content"/>
-    </section>
+            <p:link value="#{msg.register}" outcome="register.xhtml" styleClass="registerLink"/>
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="menuTop">
+
+            <h:form>
+                <p:tabMenu>
+                    <p:menuitem action="users_list?faces-redirect=true" ajax="false" value="#{msg.usersList}"
+                                rendered="#{roleView.admin}"/>
+                    <p:menuitem action="products?faces-redirect=true" ajax="false" value="#{msg.avProducts}"/>
+                    <p:menuitem outcome="user_edit?faces-redirect=true" value="#{msg.editUrDetails}"
+                                rendered="#{!mainView.loggedInCheck}">
+                        <f:param name="userId" value="#{mainView.currentUser.id}"/>
+                    </p:menuitem>
+                    <p:menuitem action="basket_view?faces-redirect=true" ajax="false" value="#{msg.myBasket}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                    <p:menuitem action="my_orders?faces-redirect=true" ajax="false" value="#{msg.myOrders}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                    <p:menuitem action="my_products?faces-redirect=true" value="#{msg.myProducts}"
+                                rendered="#{!mainView.loggedInCheck}"
+                                disabled="#{!mainView.currentUser.accepted}"/>
+                </p:tabMenu>
+
+
+            </h:form>
+            <div style="text-align: center; color: #4f4f4f">
+                <h:outputLabel rendered="#{roleView.user &amp;&amp; !mainView.currentUser.accepted}"
+                               value="#{msg.accepted}"/>
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="mainCenter">
+            <p:layout style="width:1300px;min-height:700px;" styleClass="greyBack">
+                <p:layoutUnit position="center" resizable="false" size="200" minSize="200" maxSize="300"
+                              styleClass="greyBack">
+                    <section>
+                        <ui:insert name="content"/>
+                    </section>
+                </p:layoutUnit>
+            </p:layout>
+        </h:panelGroup>
+
+    </f:view>
 </h:body>
 </html>

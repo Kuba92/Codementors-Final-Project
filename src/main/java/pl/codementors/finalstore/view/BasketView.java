@@ -26,6 +26,9 @@ public class BasketView implements Serializable {
     @EJB
     private StoreDAO store;
 
+    /**
+     * Bean EJB used to get currently logged user.
+     */
     @EJB
     private UserService userService;
 
@@ -44,6 +47,9 @@ public class BasketView implements Serializable {
      */
     private User customer;
 
+    /**
+     * Address details for order.
+     */
     private String address;
 
     public String getAddress() {
@@ -59,7 +65,12 @@ public class BasketView implements Serializable {
     }
 
     public boolean isBasketEmpty() {
-        return productsInBasket.isEmpty();
+        if (productsInBasket.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
     public void setProductsInBasket(List<Product> productsInBasket) {

@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Entity class representing an order in our store
+ * Entity class representing an order in our store.
  */
 @Entity
 @Table(name = "orders")
-public class Order  {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Order  {
     @Column
     private String adress;
 
-    @OneToMany (mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<Product> products;
 
     public Order() {

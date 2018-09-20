@@ -6,10 +6,10 @@ import java.util.Objects;
 
 
 /**
- * Entity class representing a User of our store
+ * Entity class representing a User of our store.
  */
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"})) //dodalem unique constraint na email i nickname ie. nie moze byc uzytkownikow o dwoch takich samych nickach i emailach
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "nickname"}))
 public class User {
 
     public enum Role {
@@ -43,15 +43,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany (mappedBy = "customer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Order> usersOrders;
 
     public User() {
     }
 
-
-
-    public User (boolean isAccepted, Role role) {
+    public User(boolean isAccepted, Role role) {
         this.isAccepted = isAccepted;
         this.role = role;
     }
@@ -170,5 +168,12 @@ public class User {
                 ", isAccepted=" + isAccepted +
                 ", role=" + role +
                 '}';
+    }
+
+    public static User createAnnonymousUser() {
+        User user = new User();
+        user.setName("Gal Anonim");
+        user.setAccepted(false);
+        return user;
     }
 }

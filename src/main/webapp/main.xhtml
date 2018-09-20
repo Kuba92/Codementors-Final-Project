@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -7,8 +8,9 @@
 
         template="/template.xhtml">
     <ui:define name="content">
+
         <f:view>
-            #{msg.err}
+            <h:outputLabel value="Hello, this should not be here"/>
         </f:view>
     </ui:define>
 </ui:composition>

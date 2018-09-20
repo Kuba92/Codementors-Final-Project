@@ -10,14 +10,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Servlet used to redirect user after success or failed login.
+ */
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO storeDAO;
 
@@ -30,7 +34,7 @@ public class LoginController extends HttpServlet {
         if (userByNickAndPass.isPresent()) {
             request.login(nickname, password);
             request.getSession().setAttribute("user", userByNickAndPass.get());
-            response.sendRedirect(request.getContextPath() + "/template.xhtml");
+            response.sendRedirect(request.getContextPath() + "/products.xhtml");
         } else {
             response.sendRedirect(request.getContextPath() + "/error.xhtml");
         }

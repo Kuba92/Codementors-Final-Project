@@ -4,38 +4,43 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+
         template="/template.xhtml">
     <ui:define name="content">
-        <h:dataTable value="#{userProducts.userProducts}" var="product">
+        <h:dataTable value="#{userProducts.userProducts}" var="product"
+                     rendered="#{roleView.admin || (roleView.user &amp;&amp; mainView.currentUser.accepted)}">
             <h:column>
                 <f:facet name="header">ID</f:facet>
                 #{product.id}
             </h:column>
             <h:column>
-                <f:facet name="header">Name</f:facet>
+                <f:facet name="header">#{msg.prName}</f:facet>
                 #{product.name}
             </h:column>
             <h:column>
-                <f:facet name="header">Price</f:facet>
+                <f:facet name="header">#{msg.prPrice}</f:facet>
                 #{product.price}
             </h:column>
             <h:column>
-                <f:facet name="header">Description</f:facet>
+                <f:facet name="header">#{msg.prDescription}</f:facet>
                 #{product.description}
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="Delete offer" action="#{userProducts.deleteProduct(product)}" rendered="#{product.available}"/>
+                    <h:commandButton value="#{msg.prDeleteOff}" action="my_products?faces-redirect=true"
+                                     actionListener="#{userProducts.deleteProduct(product)}"
+                                     rendered="#{product.available}"/>
                 </h:form>
             </h:column>
             <h:column>
-                <h:button outcome="product_edit" value="Edit">
+                <h:button outcome="product_edit" value="#{msg.prEdit}">
                     <f:param name="productId" value="#{product.id}"/>
                 </h:button>
             </h:column>
         </h:dataTable>
-        <h:button value="Add new" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
+        <p:button value="#{msg.prAdd}" rendered="#{roleView.admin || roleView.user}" outcome="new_offer">
             <f:param name="productId" value="0"/>
-        </h:button>
+        </p:button>
     </ui:define>
 </ui:composition>

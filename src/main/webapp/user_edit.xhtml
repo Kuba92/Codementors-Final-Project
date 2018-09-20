@@ -4,34 +4,45 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+
         template="/template.xhtml">
     <f:metadata>
         <f:viewParam name="userId" value="#{userEdit.userId}"/>
     </f:metadata>
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2"
+                         rendered="#{roleView.admin || (roleView.user &amp;&amp; userEdit.userId == mainView.currentUser.id)}">
                 <f:facet name="header">
-                    <h:outputText value="User"/>
+                    <h:outputText value="#{msg.usUser}"/>
                 </f:facet>
-                <h:outputLabel value="Name" for="name"/>
+                <h:outputLabel value="#{msg.usName}" for="name"/>
                 <h:inputText id="name" value="#{userEdit.user.name}"/>
-                <h:outputLabel value="Surname" for="surname"/>
+                <h:outputLabel value="#{msg.usSurname}" for="surname"/>
                 <h:inputText id="surname" value="#{userEdit.user.surname}"/>
                 <h:outputLabel value="Email" for="email"/>
                 <h:inputText id="email" value="#{userEdit.user.email}"/>
-                <h:outputLabel value="Nickname" for="nickname"/>
+                <h:outputLabel value="#{msg.usNickname}" for="nickname"/>
                 <h:inputText id="nickname" value="#{userEdit.user.nickname}"/>
-                <h:outputLabel for="password" value="Password" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
-                <h:inputText id="password" value="#{userEdit.user.password}" rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)}"/>
-                <h:outputLabel value="Role:" for="role" rendered="#{roleView.admin}"/>
+                <h:outputLabel for="password" value="#{msg.usPassword}"
+                               rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)
+                               || (roleView.admin &amp;&amp; userEdit.userId == mainView.currentUser.id)}"/>
+                <h:inputText id="password" value="#{userEdit.user.password}"
+                             rendered="#{roleView.user || (roleView.admin &amp;&amp; userEdit.userId == 0)
+                             || (roleView.admin &amp;&amp; userEdit.userId == mainView.currentUser.id)}"/>
+                <h:outputLabel value="#{msg.usRole}:" for="role" rendered="#{roleView.admin}"/>
                 <h:selectOneRadio id="role" value="#{userEdit.user.role}" rendered="#{roleView.admin}">
                     <f:selectItems value="#{userEdit.roles}"/>
                 </h:selectOneRadio>
-                <h:outputLabel value="Acceptance of the user:" for="acceptance" rendered="#{roleView.admin}"/>
-                <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance" rendered="#{roleView.admin}"/>
+                <h:outputLabel value="#{msg.usAccept}" for="acceptance" rendered="#{roleView.admin}"/>
+                <h:selectBooleanCheckbox value="#{userEdit.user.accepted}" id="acceptance"
+                                         rendered="#{roleView.admin}"/>
             </h:panelGrid>
-            <h:commandButton action="users_list" actionListener="#{userEdit.saveUser}" value="Save"/>
+            <p:button action="user_edit?faces-redirect=true" actionListener="#{userEdit.saveUser}" value="#{msg.usSave}"
+                      rendered="#{roleView.admin || (roleView.user &amp;&amp; userEdit.userId == mainView.currentUser.id)}">
+                <f:param name="userId" value="#{mainView.currentUser.id}"/>
+            </p:button>
         </h:form>
     </ui:define>
 </ui:composition>

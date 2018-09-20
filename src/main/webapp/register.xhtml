@@ -1,28 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition
-        xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
-        template="/template.xhtml">
-    <f:metadata>
-        <f:viewParam name="userId" value="#{userAddView.userId}"/>
-    </f:metadata>
-    <ui:define name="content">
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Name" for="name"/>
-                <h:inputText id="name" value="#{userAddView.user.name}" required="true"/>
-                <h:outputLabel value="Surname" for="surname"/>
-                <h:inputText id="surname" value="#{userAddView.user.surname}" required="true"/>
-                <h:outputLabel value="Email" for="email"/>
-                <h:inputText id="email" value="#{userAddView.user.email}" required="true"/>
-                <h:outputLabel value="Login" for="login"/>
-                <h:inputText id="login" value="#{userAddView.user.nickname}" required="true"/>
-                <h:outputLabel value="Password" for="password"/>
-                <h:inputSecret id="password" value="#{userAddView.user.password}" required="true"/>
-                <h:commandButton actionListener="#{userAddView.addNewUser}" action="login" value="Register new user"/>
-            </h:panelGrid>
-        </h:form>
-    </ui:define>
-</ui:composition>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>FinalStore</title>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Random store!"/>
+    <meta name="keywords" content="store, money"/>
+    <meta name="author" content="Maciek"/>
+    <meta name="author" content="Kuba"/>
+    <meta name="author" content="Grzegorz"/>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <f:loadBundle var="msg" basename="view.messages"/>
+</h:head>
+<h:body styleClass="rootView">
+    <h:form>
+        <h:panelGroup layout="block" styleClass="regPanel">
+
+            <p:panel header="Registration form">
+                <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+                    <f:facet name="header">
+                        <p:messages id="msgs"/>
+                    </f:facet>
+
+                    <p:outputLabel for="name" value="#{msg.usName}"/>
+                    <p:inputText id="name" value="#{userAddView.user.name}" required="true"
+                                 requiredMessage="#{msg.regReqName}"/>
+
+                    <p:outputLabel for="surname" value="#{msg.usSurname}"/>
+                    <p:inputText id="surname" value="#{userAddView.user.surname}" required="true"
+                                 requiredMessage="#{msg.regReqSurname}"/>
+
+                    <p:outputLabel for="email" value="Email:"/>
+                    <p:inputText id="email" value="#{userAddView.user.email}" required="true"
+                                 requiredMessage="#{msg.regRegEmail}"/>
+
+                    <p:outputLabel for="nickname" value="#{msg.usNickname}"/>
+                    <p:inputText id="nickname" value="#{userAddView.user.nickname}" required="true"
+                                 requiredMessage="#{msg.regReqU}"/>
+
+                    <p:outputLabel for="password" value="#{msg.usPassword}"/>
+                    <p:password id="password" value="#{userAddView.user.password}" required="true"
+                                requiredMessage="#{msg.regReqP}"/>
+                </h:panelGrid>
+                <p:commandButton value="#{msg.reqRegister}" id="btnSurname"
+                                 process="@this,surname,name,email,nickname,password " update="grid"
+                                 action="products.xhtml?faces-redirect=true"
+                                 actionListener="#{userAddView.addNewUser}"/>
+                <p:button value="#{msg.regCancel}" outcome="products.xhtml"/>
+            </p:panel>
+        </h:panelGroup>
+
+
+    </h:form>
+</h:body>
+</html>
