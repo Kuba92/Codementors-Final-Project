@@ -13,9 +13,12 @@ import java.io.Serializable;
 public class AccessController implements Serializable {
 
     @EJB
-    UserService service;
+    private UserService service;
 
     public User getCurrentUser() {
-        return service.getCurrentlyLoggedUser().get();
+        if (service.getCurrentlyLoggedUser().isPresent()) {
+            return service.getCurrentlyLoggedUser().get();
+        }
+        return User.createAnnonymousUser();
     }
 }

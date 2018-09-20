@@ -171,4 +171,11 @@ public class User {
                 ", role=" + role +
                 '}';
     }
+
+    public static User createAnnonymousUser() {
+        User user = new User();
+        user.setName("Gal Anonim");
+        user.setAccepted(false);
+        return user;
+    }
 }
