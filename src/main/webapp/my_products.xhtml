@@ -27,7 +27,7 @@
             </h:column>
             <h:column>
                 <h:form>
-                    <h:commandButton value="Delete offer" action="#{userProducts.deleteProduct(product)}" rendered="#{product.available}"/>
+                    <h:commandButton value="Delete offer" action="my_products?faces-redirect=true" actionListener="#{userProducts.deleteProduct(product)}" rendered="#{product.available}"/>
                 </h:form>
             </h:column>
             <h:column>
