@@ -12,11 +12,20 @@ import java.io.Serializable;
 @ViewScoped
 public class ProductEdit implements Serializable {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO dao;
 
+    /**
+     * Edited product.
+     */
     private Product product;
 
+    /**
+     * Edited product ID.
+     */
     private int productId;
 
     public int getProductId() {
@@ -34,11 +43,11 @@ public class ProductEdit implements Serializable {
         return product;
     }
 
+    /**
+     * Method updating product.
+     */
     public void updateProduct() {
         dao.updateProduct(product);
     }
 
-    public void deleteProduct(Product product) {
-        dao.removeProduct(product);
-    }
 }

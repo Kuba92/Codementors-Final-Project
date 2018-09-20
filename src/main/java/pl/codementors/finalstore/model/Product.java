@@ -2,12 +2,11 @@ package pl.codementors.finalstore.model;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 
 /**
- * entity class representing a product in our store
+ * Entity class representing a product in our store.
  */
 @Entity
 @Table(name = "products")
@@ -32,7 +31,6 @@ public class Product {
 
     @Column(name = "availability")
     private boolean isAvailable;
-
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")

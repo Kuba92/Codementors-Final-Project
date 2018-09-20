@@ -4,20 +4,23 @@ import pl.codementors.finalstore.StoreDAO;
 import pl.codementors.finalstore.model.User;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.POST;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Servlet used to redirect user after success or failed login.
+ */
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
+    /**
+     * Bean EJB used to communicate with db.
+     */
     @EJB
     private StoreDAO storeDAO;
 
